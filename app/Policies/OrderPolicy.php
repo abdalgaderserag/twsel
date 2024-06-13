@@ -8,12 +8,19 @@ use Illuminate\Auth\Access\Response;
 
 class OrderPolicy
 {
+
+    public function before(User $user, string $ability)
+    {
+        if ($user->isAdmin())
+            return true;
+        return false;
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return !empty($user->id);
     }
 
     /**
@@ -21,7 +28,11 @@ class OrderPolicy
      */
     public function view(User $user, Order $order): bool
     {
-        //
+        if ($user->isDriver() && $order->status == 1)
+            return true;
+        if ($user->id == $order->user_id)
+            return true;
+        return false;
     }
 
     /**
@@ -29,7 +40,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return ($user->isStore());
     }
 
     /**
@@ -37,7 +48,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        //
+        return $user->id == $order->user_id;
     }
 
     /**
@@ -45,7 +56,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        //
+        return $user->id == $order->user_id;
     }
 
     /**
@@ -53,7 +64,7 @@ class OrderPolicy
      */
     public function restore(User $user, Order $order): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -61,6 +72,6 @@ class OrderPolicy
      */
     public function forceDelete(User $user, Order $order): bool
     {
-        //
+        return false;
     }
 }

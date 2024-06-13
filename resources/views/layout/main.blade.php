@@ -9,7 +9,13 @@
     <style>
         body{
             margin: 0;
+            font-family: sans-serif;
         }
+        a{
+            color: inherit;
+            text-decoration: inherit;
+        }
+
         #main{
             width: 84%;
             padding: 8px 16px;
@@ -23,20 +29,36 @@
 
         .card{
             background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 1px 2px 6px 0px rgba(255,255,255,0.2);
+            box-shadow: 1px 2px 6px 0px rgba(220, 220, 220, 0.95);
             padding: 8px 12px;
-            margin: 0 0 4px 0;
+            margin: 0 0 1px 0;
+            justify-content: space-between;
         }
+
+        .button{
+            background-color: #417fff;
+            padding: 2px 14px;
+            border: none;
+            font-size: 12pt;
+            margin: 0 6px;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-danger{
+            background-color: #f62751;
+        }
+
     </style>
 </head>
 <body style="width: 100%">
 <div style="display: flex;width: 100%">
     <div id="main">
         @yield('main')
+{{--        @include('layout.footer')--}}
     </div>
     @include('layout.side')
 </div>
-@include('layout.footer')
 </body>
 </html>

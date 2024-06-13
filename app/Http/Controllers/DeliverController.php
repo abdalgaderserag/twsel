@@ -14,8 +14,13 @@ class DeliverController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('deliver.index')->with('orders',$user->delivers());
+        $delivers = Deliver::with('order')->where('user_id', '=', Auth::id())->get();
+        $orders = collect();
+        foreach ($delivers as $deliver){
+            $orders->push($deliver->order()->get()->first());
+        }
+        return view('deliver.index')->with('delivers', $delivers);
+//        return view('deliver.index')->with('orders', $orders);
     }
 
     /**

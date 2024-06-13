@@ -18,6 +18,11 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function deliver()
+    {
+        return $this->hasOne(Deliver::class);
+    }
+
 //    public function getStatusAttribute($status)
 //    {
 //        if ($status == 1){

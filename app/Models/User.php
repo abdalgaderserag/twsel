@@ -70,4 +70,10 @@ class User extends Authenticatable
         }
         return false;
     }
+
+
+    public function delivers()
+    {
+        return $this->hasMany(Deliver::class);
+    }
 }

@@ -25,8 +25,11 @@ class OrderController extends Controller
             $orders = $orders->where('user_id', '=', $user->id);
             return view('orders.index')->with('orders', $orders);
         }
+        if ($user->isAdmin()){
+            return response($orders);
+        }
 
-        return response('404');
+        return '404';
     }
 
     /**

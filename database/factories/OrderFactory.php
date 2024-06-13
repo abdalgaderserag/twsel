@@ -21,7 +21,7 @@ class OrderFactory extends Factory
             'name' => $this->faker->name,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,
-            'status' => rand(1,4)
+            'status' => rand(1,5)
         ];
     }
 }

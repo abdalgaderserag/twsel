@@ -22,4 +22,23 @@ class Order extends Model
             Log::info(var_dump($this) . ' dont belong to a store.');
         }
     }
+
+    public function getStatusAttribute($status)
+    {
+        if ($status == 1){
+            return 'waiting';
+        }
+        elseif ($status == 2){
+            return 'on the way';
+        }
+        elseif ($status == 3){
+            return 'delayed';
+        }
+        elseif ($status == 4){
+            return 'done';
+        }
+        elseif ($status == 5){
+            return 'canceled';
+        }
+    }
 }

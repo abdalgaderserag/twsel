@@ -15,30 +15,25 @@ class Order extends Model
 
     public function user()
     {
-        $user = $this->belongsTo(User::class);
-        if ($user->isStore())
-            return $user;
-        else {
-            Log::info(var_dump($this) . ' dont belong to a store.');
-        }
+        return $this->belongsTo(User::class);
     }
 
-    public function getStatusAttribute($status)
-    {
-        if ($status == 1){
-            return 'waiting';
-        }
-        elseif ($status == 2){
-            return 'on the way';
-        }
-        elseif ($status == 3){
-            return 'delayed';
-        }
-        elseif ($status == 4){
-            return 'done';
-        }
-        elseif ($status == 5){
-            return 'canceled';
-        }
-    }
+//    public function getStatusAttribute($status)
+//    {
+//        if ($status == 1){
+//            return 'waiting';
+//        }
+//        elseif ($status == 2){
+//            return 'on the way';
+//        }
+//        elseif ($status == 3){
+//            return 'delayed';
+//        }
+//        elseif ($status == 4){
+//            return 'done';
+//        }
+//        elseif ($status == 5){
+//            return 'canceled';
+//        }
+//    }
 }

@@ -1,3 +1,5 @@
+@extends('layout.main')
+@section('main')
 <form action="{{ route('orders.update',$order->id) }}" method="post">
     @csrf
     @method('put')
@@ -15,3 +17,4 @@
 
     <input type="submit" value="add order">
 </form>
+@endsection

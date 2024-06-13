@@ -17,7 +17,7 @@ class OrderController extends Controller
         $user = Auth::user();
         $orders = Order::all();
         if ($user->isDriver()){
-//            $orders = $orders->where('status', '=', '1');
+            $orders = $orders->where('status', '=', '1');
             return view('orders.index')->with('orders', $orders);
         }
 
@@ -26,7 +26,7 @@ class OrderController extends Controller
             return view('orders.index')->with('orders', $orders);
         }
         if ($user->isAdmin()){
-            return response($orders);
+            return view('orders.index')->with('orders', $orders);
         }
 
         return '404';
@@ -93,6 +93,10 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         if ($user['id'] == $order['user_id']){
+            $order->delete();
+            return $this->index();
+        }
+        if ($user->isAdmin()){
             $order->delete();
             return $this->index();
         }

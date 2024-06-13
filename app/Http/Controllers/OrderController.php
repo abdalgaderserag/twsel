@@ -17,7 +17,7 @@ class OrderController extends Controller
         $user = Auth::user();
         $orders = Order::all();
         if ($user->isDriver()){
-            $orders = $orders->where('status', '=', '1');
+//            $orders = $orders->where('status', '=', '1');
             return view('orders.index')->with('orders', $orders);
         }
 

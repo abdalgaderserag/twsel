@@ -12,16 +12,17 @@ Route::get('/log/{id}', function ($id){
     return \Illuminate\Support\Facades\Auth::user();
 });
 
-Route::namespace('App\Http\Controllers\Auth')->group(function (){
+Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('auth')->group(function (){
-        Route::get('logout', 'LoginController@logout')->name('logout');
+        Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+        Route::resource('orders','OrderController');
+        Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit']);
+        Route::get('deliver/{order}', 'DeliverController@store')->name('deliver.store');
     });
 
-    Route::middleware('guest')->group(function (){
+    Route::middleware('guest')->namespace('Auth')->group(function (){
         Route::get('login', 'LoginController@showLogin');
         Route::post('login', 'LoginController@login')->name('login');
     });
 });
-
-
-Route::resource('orders','App\Http\Controllers\OrderController');

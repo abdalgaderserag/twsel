@@ -12,7 +12,7 @@
                     {{ $order['status'] }}
                 </div>
                 @if(auth()->user()->isDriver())
-{{--                    <a href="{{ route('order.deliver',$order->id) }}">deliver</a>--}}
+                    <a href="{{ route('deliver.store',$order->id) }}">deliver</a>
                 @endif
 
                 @if(auth()->user()->isStore())

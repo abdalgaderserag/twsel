@@ -18,8 +18,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
+        'type',
+        'contact',
     ];
 
     /**
@@ -43,5 +45,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isStore()
+    {
+        if ($this->attributes['type'] == 1){
+            return true;
+        }
+        return false;
+    }
+
+    public function isDriver()
+    {
+        if ($this->attributes['type'] == 2){
+            return true;
+        }
+        return false;
+    }
+
+    public function isAdmin()
+    {
+        if ($this->attributes['type'] == 3){
+            return true;
+        }
+        return false;
     }
 }

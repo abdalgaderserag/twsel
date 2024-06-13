@@ -25,9 +25,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'username' => fake()->unique()->slug(),
             'password' => static::$password ??= Hash::make('password'),
+            'type' => rand(1,2),
+            'contact' => $this->faker->phoneNumber,
             'remember_token' => Str::random(10),
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -13,7 +14,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $orders = Order::all();
+        if ($user->isDriver()){
+            $orders = $orders->where('status', '=', '1');
+            return view('orders.index')->with('orders', $orders);
+        }
+
+        if ($user->isStore()){
+            $orders = $orders->where('user_id', '=', $user->id);
+            return view('orders.index')->with('orders', $orders);
+        }
+
+        return response('404');
     }
 
     /**
@@ -21,7 +34,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('orders.create');
     }
 
     /**
@@ -29,7 +42,11 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $user = Auth::user();
+        $order = new Order($request->except('token'));
+        $order['user_id'] = $user->id;
+        $order->save();
+        return $this->show($order);
     }
 
     /**
@@ -37,7 +54,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show')->with('order',$order);
     }
 
     /**
@@ -45,7 +62,11 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $user = Auth::user();
+        if ($order['user_id'] = $user->id){
+            return view('orders.edit')->with('order', $order);
+        }
+        return '401';
     }
 
     /**
@@ -53,7 +74,13 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $user = Auth::user();
+        if ($user->id == $order['user_id']){
+            $order->update($request->except('token'));
+            $order->save();
+            return view('orders.show')->with('order',$order);
+        }
+        return '404';
     }
 
     /**
@@ -61,6 +88,11 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $user = Auth::user();
+        if ($user['id'] == $order['user_id']){
+            $order->delete();
+            return $this->index();
+        }
+        return '404';
     }
 }

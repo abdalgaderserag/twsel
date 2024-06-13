@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         User::factory(10)->make()->each(function ($user){
+         User::factory(10)->create()->each(function ($user){
              if ($user->isStore()){
-                 Order::factory(10)->make([
+                 Order::factory(10)->create([
                      'user_id' => $user->id,
                  ]);
              }
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'username' => 'user_test',
         ]);
     }
 }

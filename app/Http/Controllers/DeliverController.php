@@ -15,10 +15,6 @@ class DeliverController extends Controller
     public function index()
     {
         $delivers = Deliver::with('order')->where('user_id', '=', Auth::id())->get();
-        $orders = collect();
-        foreach ($delivers as $deliver){
-            $orders->push($deliver->order()->get()->first());
-        }
         return view('deliver.index')->with('delivers', $delivers);
 //        return view('deliver.index')->with('orders', $orders);
     }
@@ -43,6 +39,7 @@ class DeliverController extends Controller
             $deliver->save();
             $order['status'] = 2;
             $order->save();
+            return redirect()->route('deliver.show',$deliver->id);
         }
         return 404;
     }

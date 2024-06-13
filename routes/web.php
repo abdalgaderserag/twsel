@@ -18,7 +18,7 @@ Route::namespace('App\Http\Controllers')->group(function (){
 
         Route::resource('orders','OrderController');
         Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit']);
-        Route::get('deliver/{order}', 'DeliverController@store')->name('deliver.store');
+        Route::get('deliver/{order}/add', 'DeliverController@store')->name('deliver.store');
     });
 
     Route::middleware('guest')->namespace('Auth')->group(function (){

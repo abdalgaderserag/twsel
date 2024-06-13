@@ -52,7 +52,7 @@ class DeliverController extends Controller
      */
     public function show(Deliver $deliver)
     {
-        return view('deliver.show')->with('order',$deliver->order);
+        return view('deliver.show')->with(['order'=>$deliver->order,'deliver' => $deliver]);
     }
 
     /**

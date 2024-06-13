@@ -41,5 +41,12 @@
         <h4>shop info :</h4>
         <span>item :</span> {{ $order->user->name }}<br>
         <span>client :</span> {{ $order->user->contact }}
+        <br>
+        <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
+            @csrf
+            @method('put')
+            <input class="button" type="submit" value="delayed" name="2">
+            <input class="button" type="submit" value="done" name="4">
+        </form>
     </div>
 @endsection

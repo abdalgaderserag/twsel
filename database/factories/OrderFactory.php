@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrderFactory extends Factory
 {
+    private function item(){
+        $item = 'hasoub';
+        if (rand(0,1)){
+            $item = 'konafa';
+        }
+        return $item;
+    }
     /**
      * Define the model's default state.
      *
@@ -17,7 +24,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'item' => $this->faker->name,
+            'item' => $this->item(),
             'name' => $this->faker->name,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,

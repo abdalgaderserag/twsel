@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
+    private $view = 'admin.users.';
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $users = User::all()->where('type', '!=', 3);
+        return view($this->view . 'index')->with('users', $users);
     }
 
     /**
@@ -22,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view($this->view . 'create');
     }
 
     /**
@@ -30,7 +32,9 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        $user = new User($request->except('_token'));
+        $user->save();
+        return redirect()->route('users.show',$user->id);
     }
 
     /**
@@ -38,7 +42,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view($this->view.'show')->with('user',$user);
     }
 
     /**
@@ -46,7 +50,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view($this->view.'edit')->with('user',$user);
     }
 
     /**
@@ -54,7 +58,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $user->update($request->except('_token'));
+        return view($this->view.'show')->with('user',$user);
     }
 
     /**
@@ -62,6 +67,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

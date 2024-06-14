@@ -8,7 +8,7 @@ Route::get('/', function () {
 Route::get('/log/{id}', function ($id){
     \Illuminate\Support\Facades\Auth::logout();
     \Illuminate\Support\Facades\Auth::loginUsingId($id);
-    return \Illuminate\Support\Facades\Auth::user();
+    return redirect()->to('/');
 });
 
 Route::get('/test',function (){

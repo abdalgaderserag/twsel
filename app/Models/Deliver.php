@@ -9,7 +9,7 @@ class Deliver extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'order_id', 'user_id',
+        'order_id', 'user_id', 'isCanceled'
     ];
 
     public function order()

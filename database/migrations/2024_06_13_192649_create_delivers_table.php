@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id',0,1);
             $table->bigInteger('order_id',0,1);
+            $table->boolean('isCanceled')->default(false);
             $table->timestamps();
         });
     }

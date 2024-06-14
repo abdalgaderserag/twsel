@@ -3,14 +3,18 @@
 use Illuminate\Support\Facades\Route;
 //testing
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('orders.index');
 });
-
 Route::get('/log/{id}', function ($id){
     \Illuminate\Support\Facades\Auth::logout();
     \Illuminate\Support\Facades\Auth::loginUsingId($id);
     return \Illuminate\Support\Facades\Auth::user();
 });
+
+Route::get('/test',function (){
+    return view('test.log');
+});
+
 
 Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('auth')->group(function (){

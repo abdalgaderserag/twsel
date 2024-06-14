@@ -13,19 +13,21 @@
     <div class="card">
         <h4>order :</h4>
         <p>
-            order #{{ $order->id }} by {{ $order->user->name }} {{ $order->item }} send to {{ $order->name }}
+            order <span>#{{ $order->id }}</span> by <span>{{ $order->user->name }}</span> to <span>{{ $order->item }}</span> send to <span>{{ $order->name }}</span>
             the order is currently
-            @if($order->status == 1)
-                wating for driver
-            @elseif($order->status == 2)
-                on the way
-            @elseif($order->status == 3)
-                delyed
-            @elseif($order->status == 4)
-                delivered
-            @elseif($order->status == 5)
-                canceled
-            @endif
+            <span>
+                @if($order->status == 1)
+                    wating for driver
+                @elseif($order->status == 2)
+                    on the way
+                @elseif($order->status == 3)
+                    delyed
+                @elseif($order->status == 4)
+                    delivered
+                @elseif($order->status == 5)
+                    canceled
+                @endif
+            </span>
         </p>
         <h4>order info :</h4>
         <div style="display: flex;justify-content: space-between">
@@ -39,7 +41,7 @@
             </div>
         </div>
         <h4>shop info :</h4>
-        <span>item :</span> {{ $order->user->name }}<br>
-        <span>client :</span> {{ $order->user->contact }}
+        <span>shop name :</span> {{ $order->user->name }}<br>
+        <span>shop contact :</span> {{ $order->user->contact }}
     </div>
 @endsection

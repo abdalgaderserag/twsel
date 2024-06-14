@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $user->id,
                     'status' => 1,
                 ])->each(function ($order) use ($user){
-                    Deliver::factory(5)->create([
+                    Deliver::factory(1)->create([
                         'user_id' => 2,
                         'order_id' => $order->id
                     ]);

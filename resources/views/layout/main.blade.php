@@ -26,6 +26,10 @@
             background-color: #80a9ff;
         }
 
+        h4{
+            text-decoration-line: underline;
+        }
+
 
         .card{
             background-color: #fff;

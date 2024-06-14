@@ -65,9 +65,18 @@ class DeliverController extends Controller
      */
     public function update(Request $request, Deliver $deliver)
     {
-        if ($request['status'] == 2 || $request['status'] == 3 || $request['status'] == 4){
-            $deliver->order()->status = $request['status'];
-            $deliver->order()->save();
+        $status = $deliver->order->status;
+
+
+        if ($status === 2 || $status === 3 || $status === 4){
+            if ($request['status'] === 'delayed')
+                $deliver->order->status = 3;
+            elseif ($request['status'] === 'done'){
+                $deliver->order->status = 4;
+            }
+            else
+                return '404';
+            $deliver->order->save();
         }
         return redirect()->route('deliver.show',$deliver->id);
     }
@@ -77,8 +86,8 @@ class DeliverController extends Controller
      */
     public function destroy(Deliver $deliver)
     {
-        $deliver->order()->status = 5;
-        $deliver->order()->save();
+        $deliver->order->status = 5;
+        $deliver->order->save();
         $deliver->isCanceled = true;
         $deliver->save();
         return redirect()->route('deliver.index');

@@ -42,6 +42,12 @@
         </div>
         <h4>shop info :</h4>
         <span>shop name :</span> {{ $order->user->name }}<br>
-        <span>shop contact :</span> {{ $order->user->contact }}
+        <span>shop contact :</span> {{ $order->user->contact }}<br><br>
+        @if(auth()->user()->isDriver())
+            <a href="{{ route('deliver.store',$order->id) }}" class="button" style="display: flex;align-items: center;width: min-content">
+                <img src="/images/hand.svg">
+                <span style="margin: 0 0 0 8px">deliver</span>
+            </a>
+        @endif
     </div>
 @endsection

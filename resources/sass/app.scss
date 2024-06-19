@@ -1,2 +1,72 @@
-//@import "variables";
-//
+@import "./variables";
+body{
+    margin: 0;
+    font-family: $main-font;
+    color: $black;
+    background-color: $white;
+    overflow: revert;
+}
+#main {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#side-section{
+    width: $side-section;
+    background-color: $blue;
+    a{
+        text-decoration: none;
+        color: $white;
+    }
+}
+
+.header{
+    font: normal normal bold 1.6rem/20px $header-font;
+    cursor: default;
+    user-select: none;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6px 6px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#avatar{
+    height: $avatar;
+    width: $avatar;
+    border-radius: ($avatar + 2)/2;
+    border: solid 2px $white;
+}
+
+#user-name{
+    margin: 0 0 0 8px;
+    span{
+        font: normal normal 400 1rem/10px $main-font;
+        color: $white;
+    }
+}
+
+#side-selections{
+    padding: 14px 10px;
+    div{
+        margin: 6px 0;
+    }
+    a{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        img{
+            margin: 0 8px 0 0;
+        }
+    }
+}
+
+
+
+#main-section{
+    width: $main-section;
+    overflow: auto;
+}

@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'username',
+        'email',
         'password',
         'type',
         'contact',
@@ -66,6 +67,15 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         if ($this->attributes['type'] == 3){
+            return true;
+        }
+        return false;
+    }
+
+
+    public function isClient(): bool
+    {
+        if ($this->attributes['type'] == 4){
             return true;
         }
         return false;

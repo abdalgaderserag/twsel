@@ -2,19 +2,19 @@
 @section('main')
     <div id="orders">
         <div>
-            <h2 style="padding: 0 0 0 12px;cursor: default;">All orders :</h2>
+            <h2>All orders :</h2>
         </div>
         @foreach($orders as $order)
-            <div class="card" style="display: flex">
-                <div style="display: flex;align-items: center;">
-                    <a href="{{ route('orders.show',$order->id) }}" style="font-weight: 700">{{ $order['item'] }}</a>
+            <div>
+                <div>
+                    <a href="{{ route('orders.show',$order->id) }}">{{ $order['item'] }}</a>
                     <img src="/images/location.svg">{{ $order['location'] }}
                     {{ $order['status'] }}
                 </div>
-                <div style="display: flex">
-                    <a href="{{ route('orders.show',$order->id) }}" class="button" style="display: flex;align-items: center;">
+                <div>
+                    <a href="{{ route('orders.show',$order->id) }}">
                         <img src="/images/info.svg">
-                        <span style="margin: 0 0 0 8px;color: black;font-weight: 700">info</span>
+                        <span>info</span>
                     </a>
 {{--                    @if(auth()->user()->isDriver())--}}
 {{--                        <a href="{{ route('deliver.store',$order->id) }}" style="display: flex;align-items: center;background-color: white">--}}
@@ -25,11 +25,12 @@
 
                     @if(auth()->user()->isStore())
 
-                        <a href="{{ route('orders.edit',$order->id) }}" class="button"><img src="/images/edit.svg"></a>
+                        <a href="{{ route('orders.edit',$order->id) }}">
+                            <img src="/images/edit.svg">
+                        </a>
                         <form action="{{ route('orders.destroy',$order->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            {{--                            <input type="submit" value="img" class="button button-danger">--}}
                             <button type="submit"><img src="/images/delete.svg"></button>
                         </form>
 

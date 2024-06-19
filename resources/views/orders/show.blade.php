@@ -1,16 +1,7 @@
 @extends('layout.main')
 @section('main')
-<style>
-    span{
-        font-weight: bold;
-    }
-    h4{
-        font-weight: 100;
-        margin: 26px 0 4px 0;
-    }
-</style>
 <h1>{{ $order->name }} : </h1>
-    <div class="card">
+    <div>
         <h4>order :</h4>
         <p>
             order <span>#{{ $order->id }}</span> by <span>{{ $order->user->name }}</span> to <span>{{ $order->item }}</span> send to <span>{{ $order->name }}</span>
@@ -30,7 +21,7 @@
             </span>
         </p>
         <h4>order info :</h4>
-        <div style="display: flex;justify-content: space-between">
+        <div>
             <div>
                 <span>item :</span> {{ $order->item }}<br>
                 <span>client :</span> {{ $order->name }}
@@ -44,9 +35,9 @@
         <span>shop name :</span> {{ $order->user->name }}<br>
         <span>shop contact :</span> {{ $order->user->contact }}<br><br>
         @if(auth()->user()->isDriver())
-            <a href="{{ route('deliver.store',$order->id) }}" class="button" style="display: flex;align-items: center;width: min-content">
+            <a href="{{ route('deliver.store',$order->id) }}">
                 <img src="/images/hand.svg">
-                <span style="margin: 0 0 0 8px">deliver</span>
+                <span>deliver</span>
             </a>
         @endif
     </div>

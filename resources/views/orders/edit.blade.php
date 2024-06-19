@@ -1,21 +1,6 @@
 @extends('layout.main')
 @section('main')
-    <style>
-        .input{
-            margin: 6px 0 0 0;
-            font-size: 13pt;
-            padding: 6px 12px;
-            border: 1px solid #d0d0d0;
-            color: #595959;
-            font-weight: 100;
-            width: 90%;
-        }
-        label{
-            font-size: 13pt;
-            margin-left: 12px;
-            font-weight: bolder;
-        }
-    </style>
+
     <h2>edit order :</h2>
     <div class="card">
         <form action="{{ route('orders.update',$order->id) }}" method="post">
@@ -34,7 +19,7 @@
             <input class="input" type="text" name="location" value="{{ $order['location'] }}">
             <br>
             <br>
-            <input type="submit" value="save order" class="button" style="padding: 8px 16px">
+            <input type="submit" value="save order">
         </form>
     </div>
 @endsection

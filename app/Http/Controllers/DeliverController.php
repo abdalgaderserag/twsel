@@ -14,7 +14,9 @@ class DeliverController extends Controller
      */
     public function index()
     {
-        $delivers = Deliver::with('order')->where('user_id', '=', Auth::id())->get();
+        $delivers = Deliver::with('order')
+            ->where('user_id', '=', Auth::id())
+            ->where('isCanceled', '=' , false)->get();
         return view('deliver.index')->with('delivers', $delivers);
 //        return view('deliver.index')->with('orders', $orders);
     }

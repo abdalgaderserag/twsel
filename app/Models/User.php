@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function isStore()
+    public function isStore(): bool
     {
         if ($this->attributes['type'] == 1){
             return true;
@@ -55,7 +55,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isDriver()
+    public function isDriver(): bool
     {
         if ($this->attributes['type'] == 2){
             return true;
@@ -63,7 +63,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         if ($this->attributes['type'] == 3){
             return true;

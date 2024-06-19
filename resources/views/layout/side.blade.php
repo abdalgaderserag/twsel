@@ -10,30 +10,23 @@
         </span>
 </div>
 
-<div class="accordion accordion-flush">
-    <div class="accordion-item">
-        <button class="accordion-button" onclick="showDetails()">
-            <a class="accordion-header" href="{{ route('orders.index') }}">Orders</a>
-        </button>
-        <div class="accordion-collapse collapse">
-            <div>completed orders</div>
-        </div>
-    </div>
+<ul>
+    <li>
+        <a href="{{ route('orders.index') }}">Orders</a>
+    </li>
     @if($user->isDriver())
-        <div class="accordion-item">
-            <button class="accordion-button">
-                <a class="accordion-header" href="{{ route('deliver.index') }}">delivers</a>
-            </button>
-        </div>
-        <div>
+        <li>
+            <a class="accordion-header" href="{{ route('deliver.index') }}">delivers</a>
+        </li>
+        <li>
             <a href="#">wage</a>
-        </div>
+        </li>
     @endif
 
-    <div>
+    <li>
         <a href="#">edit profile</a>
-    </div>
-    <div>
+    </li>
+    <li>
         <a href="{{ route('logout') }}">logout</a>
-    </div>
-</div>
+    </li>
+</ul>

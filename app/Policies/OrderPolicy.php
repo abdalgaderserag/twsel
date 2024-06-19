@@ -40,7 +40,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        return ($user->isStore());
+        return ($user->isUser());
     }
 
     /**

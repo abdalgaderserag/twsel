@@ -48,7 +48,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function isStore(): bool
+    public function isUser(): bool
     {
         if ($this->attributes['type'] == 1){
             return true;
@@ -73,13 +73,6 @@ class User extends Authenticatable
     }
 
 
-    public function isClient(): bool
-    {
-        if ($this->attributes['type'] == 4){
-            return true;
-        }
-        return false;
-    }
 
 
     public function delivers()

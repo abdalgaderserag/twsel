@@ -23,7 +23,7 @@
 {{--                        </a>--}}
 {{--                    @endif--}}
 
-                    @if(auth()->user()->isStore())
+                    @if(auth()->user()->isUser())
 
                         <a href="{{ route('orders.edit',$order->id) }}">
                             <img src="/images/edit.svg">

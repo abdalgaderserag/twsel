@@ -21,7 +21,7 @@ class OrderController extends Controller
             return view('orders.index')->with('orders', $orders);
         }
 
-        if ($user->isStore()){
+        if ($user->isUser()){
             $orders = $orders->where('user_id', '=', $user->id);
             return view('orders.index')->with('orders', $orders);
         }

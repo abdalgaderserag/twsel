@@ -4,19 +4,26 @@
     <span>
             @if($user->isDriver())
             driver
-        @elseif($user->isStore())
+        @elseif($user->isUser())
             store
         @endif
         </span>
 </div>
 
-<div>
-    <div>
-        <a href="{{ route('orders.index') }}">Orders</a>
+<div class="accordion accordion-flush">
+    <div class="accordion-item">
+        <button class="accordion-button" onclick="showDetails()">
+            <a class="accordion-header" href="{{ route('orders.index') }}">Orders</a>
+        </button>
+        <div class="accordion-collapse collapse">
+            <div>completed orders</div>
+        </div>
     </div>
     @if($user->isDriver())
-        <div>
-            <a href="{{ route('deliver.index') }}">delivers</a>
+        <div class="accordion-item">
+            <button class="accordion-button">
+                <a class="accordion-header" href="{{ route('deliver.index') }}">delivers</a>
+            </button>
         </div>
         <div>
             <a href="#">wage</a>
@@ -29,5 +36,4 @@
     <div>
         <a href="{{ route('logout') }}">logout</a>
     </div>
-</div>
 </div>

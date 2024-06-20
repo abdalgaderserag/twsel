@@ -1,6 +1,6 @@
 @php($user = \Illuminate\Support\Facades\Auth::user())
 <div class="header flex">
-    <img id="avatar" src="./images/avatar.png">
+    <img id="avatar" src="{{ url('/images/avatar.png') }}">
     <div id="user-name">
         {{ $user->name }} <br>
         <span>
@@ -17,7 +17,7 @@
 <div id="side-selections">
     <div>
         <a href="{{ route('orders.index') }}">
-            <img src="/images/hand.svg">
+            <img src="{{ url('/images/hand.svg') }}">
             Orders
         </a>
         <div style="border-left: white 2px solid;margin: 12px;padding-left: 10px">
@@ -29,7 +29,7 @@
     @if($user->isDriver())
         <div>
             <a href="{{ route('deliver.index') }}">
-                <img src="/images/item.svg">
+                <img src="{{ url('/images/item.svg') }}">
                 delivers
             </a>
             <div style="border-left: white 2px solid;margin: 12px;padding-left: 10px">
@@ -40,7 +40,7 @@
         </div>
         <div>
             <a href="#">
-                <img src="/images/info.svg">
+                <img src="{{ url('/images/info.svg') }}">
                 wage
             </a>
         </div>
@@ -48,13 +48,13 @@
 
     <div>
         <a href="#">
-            <img src="/images/edit.svg">
+            <img src="{{ url('/images/edit.svg') }}">
             edit profile
         </a>
     </div>
     <div>
         <a href="{{ route('logout') }}">
-            <img src="/images/delete.svg">
+            <img src="{{ url('/images/delete.svg') }}">
             logout
         </a>
     </div>

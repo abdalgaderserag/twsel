@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             'type' => 1,
             'name' => 'matjer al-salam'
         ])->each(function ($user){
-            if ($user->isStore()){
-                Order::factory(10)->create([
+            if ($user->isUser()){
+                Order::factory(40)->create([
                     'user_id' => $user->id,
                     'status' => 1,
                 ])->each(function ($order) use ($user){

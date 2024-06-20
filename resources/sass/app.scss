@@ -2,7 +2,7 @@
 body{
     margin: 0;
     font-family: $main-font;
-    color: $black;
+    color: $darkgray;
     background-color: $white;
     overflow: revert;
 }
@@ -30,7 +30,6 @@ body{
     user-select: none;
     justify-content: flex-start;
     align-items: center;
-    padding: 6px 6px;
     //background-color: $gray;
 }
 
@@ -69,14 +68,15 @@ body{
 
 #main-section{
     background-color: $gray;
-    width: $main-section;
+    width: $main-section - 4%;
     overflow: auto;
+    padding: 20px 2%;
 }
 
 #headline{
     justify-content: space-between;
     align-items: center;
-    padding: 6px 7% 6px 8px;
+    margin: 0 0 16px 0;
     :first-child{
         .button{
             background-color: $blue;
@@ -108,4 +108,59 @@ body{
 
 #side-section .header{
     background-color: $gray;
+}
+
+.section {
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: lighten($darkgray,42) 0 0 6px  0;
+    font-size: 1.05rem;
+    .center-text{
+        justify-content: center;
+    }
+    .item-row:first-child{
+        color: $black;
+        //cursor: pointer;
+        user-select: none;
+    }
+    .item-row{
+        padding: 6px 14px;
+        border-bottom: 1px solid $gray;
+        align-items: center;
+        .item{
+            width: 20%;
+            display: flex;
+            align-items: center;
+        }
+        :last-child{
+            justify-content: space-evenly;
+        }
+        .item-wide{
+            width: 40%;
+        }
+        a{
+            text-decoration: none;
+            color: $darkgray;
+        }
+    }
+
+    //.item-row:hover{
+    //    background-color: $gray;
+    //}
+    //.item-row:first-child:hover{
+    //    background-color: $white;
+    //    border-radius: inherit;
+    //}
+
+    .item-row:last-child{
+        border-bottom: 0 solid $gray;
+    }
+}
+
+.status{
+    background-color: $green;
+    border-radius: 20px;
+    color: $white;
+    padding: 2px 18px 4px 18px;
+    user-select: none;
 }

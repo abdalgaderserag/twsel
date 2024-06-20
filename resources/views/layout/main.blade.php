@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="stylesheet" href="/dist/css/app.css">
+    <link rel="stylesheet" href="{{ url('/dist/css/app.css') }}">
 
 </head>
 <body>
@@ -23,7 +23,7 @@
 {{--                </div>--}}
             </div>
             <div class="button flex">
-                <img src="images/filter.svg"><span style="margin-left: 8px">Filters</span>
+                <img src="{{ url('images/filter.svg') }}"><span style="margin-left: 8px">Filters</span>
             </div>
         </div>
         @yield('main')
@@ -41,8 +41,8 @@
         s.style.height = pageHeight + 'px';
 
         const m = document.getElementById('main-section')
-        m.style.maxHeight = pageHeight + 'px';
-        m.style.height = pageHeight + 'px';
+        m.style.maxHeight = (pageHeight - 40) + 'px';
+        m.style.height = (pageHeight - 40) + 'px';
     }
     window.onload = resize()
 </script>

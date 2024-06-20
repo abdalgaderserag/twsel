@@ -44,17 +44,23 @@
         <span>shop name :</span> {{ $order->user->name }}<br>
         <span>shop contact :</span> {{ $order->user->contact }}
         <br>
-        @if($order->status != 4 && $order->status != 5)
-            <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
-                @csrf
-                @method('put')
-                <input class="button" type="submit" value="delayed" name="status">
-            </form>
-            <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
-                @csrf
-                @method('put')
-                <input class="button" type="submit" value="done" name="status">
-            </form>
-        @endif
+        <br>
+        <br>
+        <br>
+        <div class="flex">
+            @if($order->status != 4 && $order->status != 5)
+                <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
+                    @csrf
+                    @method('put')
+                    <input class="button button-g" type="submit" value="done" name="status">
+                </form>
+
+                <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
+                    @csrf
+                    @method('put')
+                    <input class="button-clear" type="submit" value="delayed" name="status">
+                </form>
+            @endif
+        </div>
     </div>
 @endsection

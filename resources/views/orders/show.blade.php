@@ -35,9 +35,9 @@
         <span>shop name :</span> {{ $order->user->name }}<br>
         <span>shop contact :</span> {{ $order->user->contact }}<br><br>
         @if(auth()->user()->isDriver())
-            <a href="{{ route('deliver.store',$order->id) }}">
-                <img src="/images/hand.svg">
-                <span>deliver</span>
+            <a class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">
+                <img src="{{ url('/images/hand.svg') }}">
+                <div style="padding: 1px 0 4px 12px">Deliver</div>
             </a>
         @endif
     </div>

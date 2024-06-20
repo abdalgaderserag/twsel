@@ -16,6 +16,11 @@ class DeliverController extends Controller
     {
         $delivers = Deliver::with('order');
         $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , false)->get();
+
+//        index
+        $delivers = $delivers->reject(function (Deliver $d){
+            return $d->order->status === 4;
+        });
         return view('deliver.index')->with('delivers', $delivers);
     }
 

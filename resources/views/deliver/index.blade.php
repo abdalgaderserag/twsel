@@ -1,21 +1,47 @@
 @extends('layout.main')
 @section('main')
-    <div id="orders">
+    <div class="section" id="delivers">
+        <div class="item-row flex">
+
+            <div class="item">
+                item
+            </div>
+            <div class="item">
+                location
+            </div>
+
+            <div class="item-small">
+                status
+            </div>
+
+            <div class="item center-text">
+                Actions
+            </div>
+        </div>
         @foreach($delivers as $deliver)
             @php($order = $deliver->order)
-            <div>
-                <div>
+            <div class="item-row flex">
+
+                <div class="item">
                     <a href="{{ route('orders.show',$order['id']) }}">{{ $order['name'] }}</a>
-                    <img src="/images/location.svg">{{ $order['location'] }}
-                    {{ $order['status'] }}
                 </div>
-                <div>
-                    <a href="{{ route('deliver.show',$deliver->id) }}"><img src="/images/edit.svg"></a>
+                <div class="item">
+                    <img src="/images/location.svg">{{ $order['location'] }}
+                </div>
+
+                <div class="item-small">
+                    <span class="status">
+                        {{ $order['status'] }}
+                    </span>
+                </div>
+
+                <div class="item center-text">
+                    <a href="{{ route('deliver.show',$deliver->id) }}"><img src="{{ url('/images/edit-g.svg') }}"></a>
                     <form action="{{ route('deliver.destroy',$deliver->id) }}" method="post">
                         @csrf
                         @method('delete')
                         {{--                            <input type="submit" value="img" class="button button-danger">--}}
-                        <button type="submit"><img src="/images/delete.svg"></button>
+                        <button type="submit"><img src="{{ url('/images/delete.svg') }}"></button>
                     </form>
                 </div>
             </div>

@@ -164,3 +164,25 @@ body{
     padding: 2px 18px 4px 18px;
     user-select: none;
 }
+
+
+//delivers > index
+#delivers{
+
+    .item-row{
+        .item{
+            width: 36%;
+            button{
+                border: 0;
+                background-color: inherit;
+                cursor: pointer;
+            }
+        }
+        .item-small{
+            width: 10%;
+        }
+        .item:last-child{
+            width: 18%;
+        }
+    }
+}

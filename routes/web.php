@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//testing
+
 Route::get('/', function () {
     return redirect()->route('orders.index');
 });
+
+
+//testing
 Route::get('/log/{id}', function ($id){
     \Illuminate\Support\Facades\Auth::logout();
     \Illuminate\Support\Facades\Auth::loginUsingId($id);
@@ -20,9 +23,10 @@ Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('auth')->group(function (){
         Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-        Route::resource('orders','OrderController');
-        Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit']);
-        Route::get('deliver/{order}/add', 'DeliverController@store')->name('deliver.store');
+        Route::resource('orders','OrderController')->except(['index','show'])->middleware(\App\Http\Middleware\UserActions::class);
+        Route::resource('orders','OrderController')->only(['index','show']);
+        Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit'])->middleware(\App\Http\Middleware\DriverActions::class);
+        Route::get('deliver/{order}/add', 'DeliverController@store')->name('deliver.store')->middleware(\App\Http\Middleware\DriverActions::class);
     });
 
     Route::middleware('guest')->namespace('Auth')->group(function (){

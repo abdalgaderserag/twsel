@@ -1,4 +1,15 @@
 @extends('layout.main')
+
+@section('headline')
+    <div class="flex">
+        <div>your delivers :</div>
+    </div>
+    <div class="button flex">
+        <img src="{{ url('images/filter.svg') }}"><span style="margin-left: 8px">Filters</span>
+    </div>
+@endsection
+
+
 @section('main')
     <div class="section" id="delivers">
         <div class="item-row flex">

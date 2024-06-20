@@ -1,4 +1,14 @@
 @extends('layout.main')
+
+@section('headline')
+    <div class="flex">
+        <div>Orders :</div>
+    </div>
+    <div class="button flex">
+        <img src="{{ url('images/filter.svg') }}"><span style="margin-left: 8px">Filters</span>
+    </div>
+@endsection
+
 @section('main')
     @if(empty($orders))
         looks like there is no items at the moment come back later!

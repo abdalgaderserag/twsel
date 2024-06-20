@@ -1,6 +1,13 @@
 @extends('layout.main')
+
+@section('headline')
+    <div class="flex">
+        <div>{{ $order->name }} :</div>
+    </div>
+@endsection
+
+
 @section('main')
-<h1>{{ $order->name }} : </h1>
     <div>
         <h4>order :</h4>
         <p>
@@ -20,8 +27,10 @@
                 @endif
             </span>
         </p>
+
+
         <h4>order info :</h4>
-        <div>
+        <div class="section sec-pad">
             <div>
                 <span>item :</span> {{ $order->item }}<br>
                 <span>client :</span> {{ $order->name }}
@@ -31,11 +40,14 @@
                 <span>location :</span> {{ $order->location }}
             </div>
         </div>
+
         <h4>shop info :</h4>
-        <span>shop name :</span> {{ $order->user->name }}<br>
-        <span>shop contact :</span> {{ $order->user->contact }}<br><br>
+        <div class="section sec-pad" style="margin-bottom: 42px">
+            <span>shop name :</span> {{ $order->user->name }}<br>
+            <span>shop contact :</span> {{ $order->user->contact }}
+        </div>
         @if(auth()->user()->isDriver())
-            <a class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">
+            <a style="float: right" class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">
                 <img src="{{ url('/images/hand.svg') }}">
                 <div style="padding: 1px 0 4px 12px">Deliver</div>
             </a>

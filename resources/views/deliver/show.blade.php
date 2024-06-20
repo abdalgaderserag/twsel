@@ -1,4 +1,13 @@
 @extends('layout.main')
+
+@section('headline')
+    <div class="flex">
+        <div>{{ $order->name }} :</div>
+    </div>
+@endsection
+
+
+
 @section('main')
     <style>
         span{
@@ -9,7 +18,6 @@
             margin: 26px 0 4px 0;
         }
     </style>
-    <h1>{{ $order->name }} : </h1>
     <div class="card">
         <h4>order :</h4>
         <p>
@@ -30,7 +38,7 @@
             </span>
         </p>
         <h4>order info :</h4>
-        <div style="display: flex;justify-content: space-between">
+        <div class="section sec-pad">
             <div>
                 <span>item :</span> {{ $order->item }}<br>
                 <span>client :</span> {{ $order->name }}
@@ -41,13 +49,12 @@
             </div>
         </div>
         <h4>shop info :</h4>
-        <span>shop name :</span> {{ $order->user->name }}<br>
-        <span>shop contact :</span> {{ $order->user->contact }}
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="flex">
+        <div class="section sec-pad" style="margin-bottom: 42px">
+            <span>shop name :</span> {{ $order->user->name }}<br>
+            <span>shop contact :</span> {{ $order->user->contact }}
+        </div>
+
+        <div class="flex" style="float: right">
             @if($order->status != 4 && $order->status != 5)
                 <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
                     @csrf

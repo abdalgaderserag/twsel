@@ -30,9 +30,10 @@ a{
     user-select: none;
     justify-content: flex-start;
     align-items: center;
-    //background-color: $gray;
 }
-
+#side-section .header{
+        padding: 8px 8px;
+}
 #avatar{
     height: $avatar + px;
     width: $avatar + px;
@@ -167,6 +168,12 @@ a{
         border-bottom: 0 solid $gray;
     }
 }
+
+.sec-pad{
+    padding: 6px 14px;
+}
+
+
 
 .status{
     background-color: $green;

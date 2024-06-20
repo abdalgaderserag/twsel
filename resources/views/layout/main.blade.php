@@ -16,15 +16,7 @@
 
     <div id="main-section">
         <div id="headline" class="header flex">
-            <div class="flex">
-                <div>Orders :</div>
-{{--                <div class="button">--}}
-{{--                    Order--}}
-{{--                </div>--}}
-            </div>
-            <div class="button flex">
-                <img src="{{ url('images/filter.svg') }}"><span style="margin-left: 8px">Filters</span>
-            </div>
+            @yield('headline')
         </div>
         @yield('main')
     </div>

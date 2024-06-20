@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('delivers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id',0,1);
-            $table->bigInteger('order_id',0,1);
+            $table->uuid('order_id');
             $table->boolean('isCanceled')->default(false);
             $table->timestamps();
         });

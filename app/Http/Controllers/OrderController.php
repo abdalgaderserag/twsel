@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class OrderController extends Controller
 {
@@ -17,7 +18,9 @@ class OrderController extends Controller
         $user = Auth::user();
         $orders = Order::all();
         if ($user->isDriver()){
-            $orders = $orders->where('status', '=', '1');
+            $orders = $orders->reject(function (Order $o){
+                return !($o['status'] === 1 || $o['status'] === 5);
+            });
             return view('orders.index')->with('orders', $orders);
         }
 

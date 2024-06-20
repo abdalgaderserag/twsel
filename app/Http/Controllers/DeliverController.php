@@ -34,6 +34,19 @@ class DeliverController extends Controller
      */
     public function store(Order $order)
     {
+        $user = Auth::user();
+        $count = 0;
+
+        foreach ($user->delivers as $del){
+            if ($del->order['status'] !== 5 || $del->order['status'] !== 4){
+                $count++;
+            }
+        }
+
+        if ($count>=5){
+            return redirect()->back()->with('over_orders',true);
+        }
+
         if ($order['status'] == 1){
             $deliver = new Deliver();
             $deliver['user_id'] = Auth::id();

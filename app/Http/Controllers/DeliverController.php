@@ -34,11 +34,11 @@ class DeliverController extends Controller
      */
     public function store(Order $order)
     {
-        $user = Auth::user();
         $count = 0;
-
-        foreach ($user->delivers as $del){
-            if ($del->order['status'] !== 5 || $del->order['status'] !== 4){
+        $delivers = Deliver::with('order')->where('user_id','=',Auth::id());
+        foreach ($delivers as $del){
+            $stat =  $del->order->status;
+            if ($stat !== 5 && $stat !== 4){
                 $count++;
             }
         }

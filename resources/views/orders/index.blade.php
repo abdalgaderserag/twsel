@@ -63,26 +63,34 @@
                 </div>
 
                 <div class="item center-text">
-                    <a href="{{ route('orders.show',$order->id) }}">
-                        <img src="{{ url('/images/info.svg') }}">
-{{--                        <span>info</span>--}}
-                    </a>
                     @if(auth()->user()->isDriver())
+
+                        <a href="{{ route('orders.show',$order->id) }}">
+                            <img src="{{ url('/images/info.svg') }}">
+                        </a>
+
                         <a href="{{ route('deliver.store',$order->id) }}">
                             <img src="{{ url('/images/deliver.svg') }}">
-{{--                            <span>deliver</span>--}}
                         </a>
                     @endif
 
                     @if(auth()->user()->isUser())
 
-                        <a href="{{ route('orders.edit',$order->id) }}">
-                            <img src="{{ url('/images/edit.svg') }}">
-                        </a>
+                        <button>
+                            <a href="{{ route('orders.show',$order->id) }}">
+                                <img src="{{ url('/images/info.svg') }}">
+                            </a>
+                        </button>
+
+                        <button>
+                            <a href="{{ route('orders.edit',$order->id) }}">
+                                <img src="{{ url('/images/edit-g.svg') }}">
+                            </a>
+                        </button>
                         <form action="{{ route('orders.destroy',$order->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit"><img src="{{ url('/images/delete.svg') }}"></button>
+                            <button type="submit"><img src="{{ url('/images/delete-g.svg') }}"></button>
                         </form>
 
                     @endif

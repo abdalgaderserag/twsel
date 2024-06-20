@@ -145,9 +145,9 @@ a{
             display: flex;
             align-items: center;
         }
-        :last-child{
-            justify-content: space-evenly;
-        }
+        //:last-child{
+        //    justify-content: space-evenly;
+        //}
         .item-wide{
             width: 40%;
         }
@@ -192,6 +192,7 @@ a{
 }
 
 
+
 //delivers > index
 #delivers{
 
@@ -209,6 +210,18 @@ a{
         }
         .item:last-child{
             width: 18%;
+        }
+    }
+}
+
+#orders{
+    .item-row{
+        .item{
+            button{
+                border: 0;
+                background-color: inherit;
+                cursor: pointer;
+            }
         }
     }
 }

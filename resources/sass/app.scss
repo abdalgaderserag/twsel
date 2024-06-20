@@ -31,13 +31,13 @@ body{
     justify-content: flex-start;
     align-items: center;
     padding: 6px 6px;
-    background-color: rgba(0, 0, 0, 0.1);
+    //background-color: $gray;
 }
 
 #avatar{
-    height: $avatar;
-    width: $avatar;
-    border-radius: ($avatar + 2)/2;
+    height: $avatar + px;
+    width: $avatar + px;
+    border-radius: calc(($avatar + 2)/2) + px;
     border: solid 2px $white;
 }
 
@@ -62,11 +62,50 @@ body{
             margin: 0 8px 0 0;
         }
     }
+
 }
 
 
 
 #main-section{
+    background-color: $gray;
     width: $main-section;
     overflow: auto;
+}
+
+#headline{
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 7% 6px 8px;
+    :first-child{
+        .button{
+            background-color: $blue;
+        }
+    }
+}
+
+
+.button{
+    color: $white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    background-color: $red;
+    padding: 6px 12px;
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+.button:hover{
+    box-shadow: lighten($darkgray,32) -3px 4px 9px -1px;
+}
+
+
+
+
+
+
+
+
+#side-section .header{
+    background-color: $gray;
 }

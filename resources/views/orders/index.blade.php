@@ -1,9 +1,7 @@
 @extends('layout.main')
 @section('main')
     <div id="orders">
-        <div>
-            <h2>All orders :</h2>
-        </div>
+
         @foreach($orders as $order)
             <div>
                 <div>

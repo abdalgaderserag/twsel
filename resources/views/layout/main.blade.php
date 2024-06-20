@@ -15,13 +15,28 @@
 
 
     <div id="main-section">
+        <div id="headline" class="header flex">
+            <div class="flex">
+                <div>Orders :</div>
+{{--                <div class="button">--}}
+{{--                    Order--}}
+{{--                </div>--}}
+            </div>
+            <div class="button flex">
+                <img src="images/filter.svg"><span style="margin-left: 8px">Filters</span>
+            </div>
+        </div>
         @yield('main')
     </div>
 
 </div>
 <script>
+    const item = document.getElementsByClassName('header')[0];
+
     function resize (){
         const pageHeight = window.innerHeight;
+        const headerHeight = item.offsetHeight - 12;
+        document.getElementsByClassName('header')[1].style.height = headerHeight + 'px';
         const s = document.getElementById('side-section')
         s.style.height = pageHeight + 'px';
 

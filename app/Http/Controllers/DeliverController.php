@@ -14,11 +14,9 @@ class DeliverController extends Controller
      */
     public function index()
     {
-        $delivers = Deliver::with('order')
-            ->where('user_id', '=', Auth::id())
-            ->where('isCanceled', '=' , false)->get();
+        $delivers = Deliver::with('order');
+        $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , false)->get();
         return view('deliver.index')->with('delivers', $delivers);
-//        return view('deliver.index')->with('orders', $orders);
     }
 
     /**
@@ -80,19 +78,22 @@ class DeliverController extends Controller
      */
     public function update(Request $request, Deliver $deliver)
     {
-        $status = $deliver->order->status;
+        $order = $deliver->order;
+        $status = $order->status;
 
 
-        if ($status === 2 || $status === 3 || $status === 4){
+        if ($status === 2 || $status === 3){
             if ($request['status'] === 'delayed')
-                $deliver->order->status = 3;
+                $order->status = 3;
             elseif ($request['status'] === 'done'){
-                $deliver->order->status = 4;
+                $order->status = 4;
             }
             else
                 return '404';
-            $deliver->order->save();
         }
+        $order->update();
+
+
         return redirect()->route('deliver.show',$deliver->id);
     }
 

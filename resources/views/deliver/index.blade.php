@@ -37,7 +37,7 @@
                     <a href="{{ route('orders.show',$order['id']) }}">{{ $order['name'] }}</a>
                 </div>
                 <div class="item">
-                    <img src="/images/location.svg">{{ $order['location'] }}
+                    <img src="{{ url('/images/location.svg') }}">{{ $order['location'] }}
                 </div>
 
                 <div class="item-small">
@@ -52,7 +52,7 @@
                         @csrf
                         @method('delete')
                         {{--                            <input type="submit" value="img" class="button button-danger">--}}
-                        <button type="submit"><img src="{{ url('/images/delete.svg') }}"></button>
+                        <button type="submit"><img src="{{ url('/images/delete-g.svg') }}"></button>
                     </form>
                 </div>
             </div>

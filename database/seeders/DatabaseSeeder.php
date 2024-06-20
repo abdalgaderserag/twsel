@@ -24,9 +24,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'matjer al-salam'
         ])->each(function ($user){
             if ($user->isUser()){
-                Order::factory(40)->create([
+                Order::factory(10)->create([
                     'user_id' => $user->id,
                     'status' => 1,
+                ]);
+                Order::factory(40)->create([
+                    'user_id' => $user->id,
+                    'status' => 2,
                 ])->each(function ($order) use ($user){
                     Deliver::factory(1)->create([
                         'user_id' => 2,

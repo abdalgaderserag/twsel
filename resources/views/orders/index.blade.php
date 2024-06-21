@@ -66,7 +66,7 @@
                     @if(auth()->user()->isDriver())
 
                         <a href="{{ route('orders.show',$order->id) }}">
-                            <img src="{{ url('/images/info.svg') }}">
+                            <img src="{{ url('/images/info-g.svg') }}">
                         </a>
 
                         <a href="{{ route('deliver.store',$order->id) }}">

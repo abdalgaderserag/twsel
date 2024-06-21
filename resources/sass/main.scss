@@ -1,0 +1,74 @@
+@import "./variables";
+
+$avatar : 72px;
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button{
+    color: $white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    background-color: $blue;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+button:hover{
+    box-shadow: lighten($darkgray,32) -3px 4px 9px -1px;
+}
+
+
+
+#header{
+    width: 100%;
+    background-color: $white;
+    color: $black;
+    padding: 4px 0;
+    border-bottom: 4px solid $blue;
+    box-shadow: lighten($darkgray,32) 0 0 2px  0;
+    font-size: 1.32rem;
+    .item{
+        cursor: pointer;
+        margin: 0 6px;
+        button{
+            font-size: inherit;
+            color: $white;
+            cursor: pointer;
+        }
+    }
+    .item-ef:hover{
+        border-bottom: 2px solid $blue;
+        padding: 6px 0;
+    }
+    .active{
+        color: $blue;
+    }
+    .active:hover{
+        border-bottom: 0;
+        padding: 0;
+    }
+}
+#logo{
+    height: 48px;
+    margin-left: 4%;
+}
+
+#user{
+    img{
+        height: $avatar;
+        width: $avatar;
+        border-radius: calc((($avatar)/2)) + 3;
+        border: 3px solid $blue;
+    }
+}
+
+#main-section{
+    min-height: 600px;
+}

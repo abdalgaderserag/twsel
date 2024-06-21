@@ -26,7 +26,7 @@ class OrderController extends Controller
 
         if ($user->isUser()){
             $orders = $orders->where('user_id', '=', $user->id);
-            return view('orders.index')->with('orders', $orders);
+            return view('user.dashboard')->with('orders', $orders);
         }
         if ($user->isAdmin()){
             return view('orders.index')->with('orders', $orders);

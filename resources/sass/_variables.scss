@@ -20,3 +20,15 @@ $header-font : Quicksand;
 
 
 
+body{
+    margin: 0;
+    font-family: $main-font;
+    color: $darkgray;
+    background-color: $gray;
+    overflow: revert;
+}
+
+
+#main {
+    width: 100%;
+}

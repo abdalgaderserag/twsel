@@ -26,6 +26,7 @@ class OrderFactory extends Factory
         return [
             'item' => $this->item(),
             'name' => $this->faker->name,
+            'pickup' => $this->faker->streetAddress,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,
             'status' => rand(1,5)

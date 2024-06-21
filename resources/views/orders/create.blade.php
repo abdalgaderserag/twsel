@@ -10,13 +10,16 @@
             <label for="name">enter the name of the client :</label><br>
             <input class="input" type="text" name="name"><br><br>
 
-            <label for="name">enter the name of the item :</label><br>
+            <label for="item">enter the name of the item :</label><br>
             <input class="input" type="text" name="item"><br><br>
 
-            <label for="name">client phone number :</label><br>
+            <label for="contact">client phone number :</label><br>
             <input class="input" type="text" name="contact"><br><br>
 
-            <label for="name">address of the order :</label><br>
+            <label for="pickup">address of the pickup :</label><br>
+            <input class="input" type="text" name="pickup">
+
+            <label for="location">address of the order :</label><br>
             <input class="input" type="text" name="location">
             <br>
             <br>

@@ -9,11 +9,14 @@
             <label for="name">enter the name of the client :</label><br>
             <input class="input" type="text" name="name" value="{{ $order['name'] }}"><br><br>
 
-            <label for="name">enter the name of the item :</label><br>
+            <label for="item">enter the name of the item :</label><br>
             <input class="input" type="text" name="item" value="{{ $order['item'] }}"><br><br>
 
-            <label for="name">client phone number :</label><br>
+            <label for="contact">client phone number :</label><br>
             <input class="input" type="text" name="contact" value="{{ $order['contact'] }}"><br><br>
+
+            <label for="pickup">address of the order :</label><br>
+            <input class="input" type="text" name="pickup" value="{{ $order['pickup'] }}">
 
             <label for="name">address of the order :</label><br>
             <input class="input" type="text" name="location" value="{{ $order['location'] }}">

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('item');
             $table->string('name');
+            $table->text('pickup');
             $table->text('location');
             $table->string('contact');
             $table->smallInteger('status',0,1);

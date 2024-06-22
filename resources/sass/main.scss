@@ -24,6 +24,10 @@ button:hover{
     box-shadow: lighten($darkgray,32) -3px 4px 9px -1px;
 }
 
+.green{
+    background-color: $green;
+}
+
 
 
 #header{
@@ -68,7 +72,77 @@ button:hover{
         border: 3px solid $blue;
     }
 }
-
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #main-section{
-    min-height: 600px;
+    width: $main-section;
+}
+
+.header{
+    font-size: 1.8rem;
+    margin: 24px 0;
+}
+
+.orders{
+    .order-card{
+        border-radius: 16px;
+        background-color: $white;
+        padding: 12px 1.5%;
+        align-items: flex-start;
+        box-shadow: lighten($darkgray,32) -1px 1px 3px -1px;
+        .card-info{
+            font-size: 1.23rem;
+            font-weight: 500;
+            text-align: center;
+            img{
+                border-radius: 16px;
+                height: 124px;
+                border: 2px solid $gray;
+            }
+        }
+
+        .card-body{
+            color: $black;
+            font-size: 1.15rem;
+            width: 100%;
+            margin-left: 18px;
+        }
+    }
+}
+
+
+
+.center-text{
+    justify-content: center;
+}
+.item-row:first-child{
+    color: $black;
+    //cursor: pointer;
+    user-select: none;
+}
+.item-row{
+    padding: 6px 14px;
+    border-bottom: 1px solid $gray;
+    align-items: center;
+    .item{
+        width: 15%;
+        display: flex;
+        align-items: center;
+    }
+
+    .item-wide{
+        width: 27.5%;
+    }
+
+    a{
+        color: $darkgray;
+        text-decoration: none;
+    }
+}
+
+.item-row:last-child{
+    border-bottom: 0 solid $gray;
 }

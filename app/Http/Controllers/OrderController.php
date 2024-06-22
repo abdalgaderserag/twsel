@@ -60,6 +60,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        // todo : redirect driver to show delivery if alrady added as delivery
         return view('orders.show')->with('order',$order);
     }
 

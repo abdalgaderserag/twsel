@@ -21,6 +21,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'image',
         'type',
         'contact',
     ];
@@ -78,5 +79,11 @@ class User extends Authenticatable
     public function delivers()
     {
         return $this->hasMany(Deliver::class);
+    }
+
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

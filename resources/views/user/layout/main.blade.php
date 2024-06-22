@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="main">
+
     <div class="flex" id="header">
         @include('user.layout.header')
     </div>

@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
 //        ]);
         User::factory(1)->create([
             'type' => 1,
-            'name' => 'matjer al-salam'
         ])->each(function ($user){
             if ($user->isUser()){
                 Order::factory(10)->create([

@@ -1,4 +1,3 @@
-@php($user = \Illuminate\Support\Facades\Auth::user())
 
 <div class="flex" style="justify-content: space-between;min-width: 26%">
     <img id="logo" src="{{ url('images/deezer.svg') }}">

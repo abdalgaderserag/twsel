@@ -23,8 +23,13 @@ Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('auth')->group(function (){
         Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-        Route::resource('orders','OrderController')->except(['index','show'])->middleware(\App\Http\Middleware\UserActions::class);
+        Route::middleware(\App\Http\Middleware\UserActions::class)->group(function (){
+            Route::resource('orders','OrderController')->except(['index','show']);
+            Route::get('/dashboard','Auth\UserController@home')->name('home');
+            Route::get('/{username}/profile','Auth\UserController@profile')->name('profile');
+        });
         Route::resource('orders','OrderController')->only(['index','show']);
+
         Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit'])->middleware(\App\Http\Middleware\DriverActions::class);
         Route::get('deliver/{order}/add', 'DeliverController@store')->name('deliver.store')->middleware(\App\Http\Middleware\DriverActions::class);
     });

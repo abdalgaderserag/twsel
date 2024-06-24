@@ -1,6 +1,6 @@
 
 <div class="flex" style="justify-content: space-between;min-width: 26%">
-        <img id="logo" src="{{ url('images/deezer.svg') }}" onclick="location.href = '{{ route('orders.index') }}'">
+        <img id="logo" src="{{ url('images/deezer.svg') }}" onclick="location.href = '{{ route('home') }}'">
 
     <div class="item">
         <a href="{{ route('orders.create') }}">
@@ -23,9 +23,11 @@
 {{--        payments--}}
 {{--    </div>--}}
     <div id="user" class="item flex">
-        <img src="{{ url('images/avatar.png') }}">
+        <img onclick="location.href = '{{ route('profile',$user->username) }}'" src="{{ url('images/avatar.png') }}">
         <div>
-            {{ $user->name }}
+            <a href="{{ route('profile',$user->username) }}">
+                {{ $user->name }}
+            </a>
         </div>
     </div>
 </div>

@@ -17,6 +17,11 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $orders = Order::all();
+
+        if ($user->isUser()){
+            return redirect()->route('home');
+        }
+
         if ($user->isDriver()){
             $orders = $orders->reject(function (Order $o){
                 return !($o['status'] === 1 || $o['status'] === 5);
@@ -24,16 +29,6 @@ class OrderController extends Controller
             return view('orders.index')->with('orders', $orders);
         }
 
-        if ($user->isUser()){
-            $orders = $orders->where('user_id', '=', $user->id);
-            $ongoing = $orders->filter(function (Order $o){
-                return ($o['status'] === 2 || $o['status'] === 3);
-            });
-            return view('user.dashboard')->with([
-                'orders' => $orders,
-                'ongoing' => $ongoing,
-            ]);
-        }
         if ($user->isAdmin()){
             return view('orders.index')->with('orders', $orders);
         }

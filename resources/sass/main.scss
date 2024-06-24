@@ -62,6 +62,7 @@ button:hover{
 #logo{
     height: 48px;
     margin-left: 4%;
+    cursor: pointer;
 }
 
 #user{
@@ -145,4 +146,31 @@ button:hover{
 
 .item-row:last-child{
     border-bottom: 0 solid $gray;
+}
+
+.card{
+    text-align: center;
+    label{
+        float: left;
+        margin-left: 4%;
+        font-size: 1.2rem;
+    }
+    input{
+        width: 90%;
+        padding: 6px 1%;
+        margin: 8px 0;
+        font-size: 1.1rem;
+        color: $black;
+    }
+    input:last-child{
+        color: $white;
+        font-size: 1.2rem;
+        background-color: $blue;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input:last-child:hover{
+        box-shadow: lighten($darkgray,32) -3px 4px 9px -1px;
+    }
 }

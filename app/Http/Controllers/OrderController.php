@@ -40,7 +40,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('orders.create');
+        return view('user.orders.create');
     }
 
     /**
@@ -60,8 +60,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        // todo : redirect driver to show delivery if alrady added as delivery
-        return view('orders.show')->with('order',$order);
+        if (Auth::user()->isDriver()){
+            // todo : redirect driver to show delivery if alrady added as delivery
+            return view('orders.show')->with('order',$order);
+        }
+        return  view('user.orders.show')->with('order', $order);
     }
 
     /**
@@ -71,7 +74,7 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         if ($order['user_id'] = $user->id){
-            return view('orders.edit')->with('order', $order);
+            return view('user.orders.edit')->with('order', $order);
         }
         return '401';
     }

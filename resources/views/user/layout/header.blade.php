@@ -1,11 +1,13 @@
 
 <div class="flex" style="justify-content: space-between;min-width: 26%">
-    <img id="logo" src="{{ url('images/deezer.svg') }}">
+        <img id="logo" src="{{ url('images/deezer.svg') }}" onclick="location.href = '{{ route('orders.index') }}'">
 
     <div class="item">
-        <button>
-            + Order Now
-        </button>
+        <a href="{{ route('orders.create') }}">
+            <button>
+                + Order Now
+            </button>
+        </a>
     </div>
 </div>
 @auth

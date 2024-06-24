@@ -23,16 +23,9 @@
         </button>
     @endif
 
-</div>
-<script>
+    @include('user.layout.footer')
 
-    function resize (){
-        const pageHeight = window.innerHeight;
-        const m = document.getElementById('main-section')
-        m.style.minHeight = (pageHeight - 40) + 'px';
-        // m.style.height = (pageHeight - 40) + 'px';
-    }
-    window.onload = resize()
-</script>
+</div>
+
 </body>
 </html>

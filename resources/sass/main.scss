@@ -217,6 +217,18 @@ button:hover{
     color: inherit;
 }
 
+#footer{
+    width: 100%;
+    background-color: $darkgray;
+    height: 312px;
+    margin-top: 42px;
+    box-shadow: lighten($darkgray,32) 0 -2px 3px -1px;
+    :first-child{
+        height: 96px;
+        background-color: $blue;
+    }
+}
+
 @media (max-width: 700px) {
     #main-section{
         width: 98%;

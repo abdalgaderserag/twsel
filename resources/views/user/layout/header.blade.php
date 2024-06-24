@@ -13,15 +13,15 @@
 @auth
 <div class="flex" style="margin-right: 0.8%">
 
-    <div class="item item-ef active">
-        Dashboard
-    </div>
-    <div class="item item-ef">
-        Orders
-    </div>
-    <div class="item item-ef">
-        payments
-    </div>
+{{--    <div class="item item-ef active">--}}
+{{--        Dashboard--}}
+{{--    </div>--}}
+{{--    <div class="item item-ef">--}}
+{{--        Orders--}}
+{{--    </div>--}}
+{{--    <div class="item item-ef">--}}
+{{--        payments--}}
+{{--    </div>--}}
     <div id="user" class="item flex">
         <img src="{{ url('images/avatar.png') }}">
         <div>

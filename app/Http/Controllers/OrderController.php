@@ -26,7 +26,13 @@ class OrderController extends Controller
 
         if ($user->isUser()){
             $orders = $orders->where('user_id', '=', $user->id);
-            return view('user.dashboard')->with('orders', $orders);
+            $ongoing = $orders->filter(function (Order $o){
+                return ($o['status'] === 2 || $o['status'] === 3);
+            });
+            return view('user.dashboard')->with([
+                'orders' => $orders,
+                'ongoing' => $ongoing,
+            ]);
         }
         if ($user->isAdmin()){
             return view('orders.index')->with('orders', $orders);
@@ -88,7 +94,7 @@ class OrderController extends Controller
         if ($user->id == $order['user_id']){
             $order->update($request->except('token'));
             $order->save();
-            return view('orders.show')->with('order',$order);
+            return view('user.orders.show')->with('order',$order);
         }
         return '404';
     }

@@ -3,10 +3,20 @@
 $avatar : 72px;
 
 
+
 .flex{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#add-order{
+    border-radius: 24px;
+    border: 2px solid $white;
+    position: fixed;
+    right: 16px;
+    bottom: 37px;
+    display: none;
 }
 
 button{
@@ -90,6 +100,10 @@ button:hover{
 .header{
     font-size: 1.8rem;
     margin: 24px 0;
+}
+#left-header{
+    justify-content: space-between;
+    min-width: 26%
 }
 
 .orders{
@@ -203,4 +217,31 @@ button:hover{
     color: inherit;
 }
 
+@media (max-width: 700px) {
+    #main-section{
+        width: 98%;
+    }
+    .item-row{
+        .item{
+            display: none;
+            width: 35%;
+        }
+        .item:first-child{
+            display: block;
+        }
+        .item:last-child{
+            display: block;
+        }
+        .center-text{
+            display: block;
+            width: 30%;
+        }
+    }
 
+    #left-header{
+        display: none;
+    }
+    #add-order{
+        display: block;
+    }
+}

@@ -14,10 +14,14 @@
         @include('user.layout.header')
     </div>
 
-
     <div id="main-section">
         @yield('main')
     </div>
+    @if(url()->current() !== route('orders.create'))
+        <button id="add-order" onclick="location.href = '{{ route('orders.create') }}'">
+            + Order Now
+        </button>
+    @endif
 
 </div>
 <script>

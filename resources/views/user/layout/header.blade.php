@@ -1,5 +1,5 @@
 
-<div class="flex" style="justify-content: space-between;min-width: 26%">
+<div id="left-header" class="flex">
         <img id="logo" src="{{ url('images/deezer.svg') }}" onclick="location.href = '{{ route('home') }}'">
 
     <div class="item">
@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
+
 @endauth
 
 @guest

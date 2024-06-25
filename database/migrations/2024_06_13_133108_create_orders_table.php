@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('location');
             $table->string('contact');
             $table->smallInteger('status',0,1);
+            $table->text('token')->unique();
             $table->timestamps();
         });
     }

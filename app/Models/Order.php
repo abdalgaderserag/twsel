@@ -14,6 +14,10 @@ class Order extends Model
         'item', 'name', 'pickup', 'location', 'contact', 'user_id', 'status'
     ];
 
+    protected $guarded = [
+        'token'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

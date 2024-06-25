@@ -43,11 +43,22 @@ $order = $user->orders->last();
             <span>shop name :</span> {{ $order->user->name }}<br>
             <span>shop contact :</span> {{ $order->user->contact }}
         </div>
-        @if(auth()->user()->isDriver())
-            <a style="float: right" class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">
-                <img src="{{ url('/images/hand.svg') }}">
-                <div style="padding: 1px 0 4px 12px">Deliver</div>
-            </a>
+        @if(auth()->id() == $order->user->id)
+            <div>
+                <h4>token :</h4>
+                <div>
+                    {{ $order->token }}
+                </div>
+                <div>
+                    {{ // TODO : generate QR image here }}
+                </div>
+            </div>
         @endif
+{{--        @if(auth()->user()->isDriver())--}}
+{{--            <a style="float: right" class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">--}}
+{{--                <img src="{{ url('/images/hand.svg') }}">--}}
+{{--                <div style="padding: 1px 0 4px 12px">Deliver</div>--}}
+{{--            </a>--}}
+{{--        @endif--}}
     </div>
 @endsection

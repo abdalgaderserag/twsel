@@ -29,7 +29,8 @@ class OrderFactory extends Factory
             'pickup' => $this->faker->streetAddress,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,
-            'status' => rand(1,5)
+            'status' => rand(1,5),
+            'token' => fake()->sha256(),
         ];
     }
 }

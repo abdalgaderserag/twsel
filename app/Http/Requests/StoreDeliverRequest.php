@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreDeliverRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreDeliverRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::user()->isDriver();
     }
 
     /**

@@ -47,10 +47,17 @@
             <span>shop contact :</span> {{ $order->user->contact }}
         </div>
         @if(auth()->user()->isDriver())
-            <a style="float: right" class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">
-                <img src="{{ url('/images/hand.svg') }}">
-                <div style="padding: 1px 0 4px 12px">Deliver</div>
-            </a>
+            {{ $order->token }}
+            <form action="{{ route('deliver.store',$order->id) }}" method="post">
+                @csrf
+                @method('post')
+                <label for="token">enter token :</label>
+                <input class="input" type="text" name="token">
+                <button style="float: right" class="button button-g flex" type="submit">
+                    <img src="{{ url('/images/hand.svg') }}">
+                    <div style="padding: 1px 0 4px 12px">Deliver</div>
+                </button>
+            </form>
         @endif
     </div>
 @endsection

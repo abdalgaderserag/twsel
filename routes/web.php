@@ -31,7 +31,7 @@ Route::namespace('App\Http\Controllers')->group(function (){
         Route::resource('orders','OrderController')->only(['index','show']);
 
         Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit'])->middleware(\App\Http\Middleware\DriverActions::class);
-        Route::get('deliver/{order}/add', 'DeliverController@store')->name('deliver.store')->middleware(\App\Http\Middleware\DriverActions::class);
+        Route::post('deliver/{order}/add', 'DeliverController@store')->name('deliver.store')->middleware(\App\Http\Middleware\DriverActions::class);
     });
 
     Route::middleware('guest')->namespace('Auth')->group(function (){

@@ -16,9 +16,10 @@ class UserController extends Controller
         $ongoing = $orders->filter(function (Order $o){
             return ($o['status'] === 2 || $o['status'] === 3);
         });
+        $ongoing = $ongoing->sortBy('status');
         return view('user.dashboard')->with([
             'orders' => $orders,
-            'ongoing' => $ongoing,
+            'ongoing' => $ongoing->take(3),
         ]);
     }
 

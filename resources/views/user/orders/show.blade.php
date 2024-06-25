@@ -50,7 +50,7 @@ $order = $user->orders->last();
                     {{ $order->token }}
                 </div>
                 <div>
-                    {{ // TODO : generate QR image here }}
+{{--                    {{ // TODO : generate QR image here }}--}}
                 </div>
             </div>
         @endif

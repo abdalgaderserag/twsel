@@ -69,9 +69,9 @@
                             <img src="{{ url('/images/info-g.svg') }}">
                         </a>
 
-                        <a href="{{ route('deliver.store',$order->id) }}">
-                            <img src="{{ url('/images/deliver.svg') }}">
-                        </a>
+{{--                        <a href="{{ route('deliver.store',$order->id) }}">--}}
+{{--                            <img src="{{ url('/images/deliver.svg') }}">--}}
+{{--                        </a>--}}
                     @endif
 
                     @if(auth()->user()->isUser())

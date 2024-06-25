@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDeliverRequest;
 use App\Models\Deliver;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -35,8 +36,13 @@ class DeliverController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Order $order)
+    public function store(Order $order, StoreDeliverRequest $request)
     {
+        if ($request->token !== $order->token){
+            return redirect()->back()->withErrors([
+                'token' => 'wrong token'
+            ]);
+        }
         $count = 0;
         $delivers = Deliver::with('order')->where('user_id','=',Auth::id());
         foreach ($delivers as $del){

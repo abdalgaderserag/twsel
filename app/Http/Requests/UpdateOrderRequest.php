@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateOrderRequest extends FormRequest
 {
@@ -11,7 +13,10 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $order = Order::all()
+            ->where('id','=',$this->route()->originalParameters()['order'])->first;
+        $user = Auth::user();
+        return $user->isUser() && $user->id === $order->get()->user_id;
     }
 
     /**
@@ -21,8 +26,12 @@ class UpdateOrderRequest extends FormRequest
      */
     public function rules(): array
     {
+        $location = 'required|string|min:8';
         return [
-            //
+            'item' => 'required|string|min:3',
+            'pickup' => $location,
+            'location' => $location,
+            'contact' => 'required|string|min:6',
         ];
     }
 }

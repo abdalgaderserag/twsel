@@ -25,7 +25,6 @@ class OrderFactory extends Factory
     {
         return [
             'item' => $this->item(),
-            'name' => $this->faker->name,
             'pickup' => $this->faker->streetAddress,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,

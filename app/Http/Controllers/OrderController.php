@@ -50,7 +50,11 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
-        $order = new Order($request->except('token'));
+        $order = new Order($request->except([
+            'token',
+            'status',
+        ]));
+        $order['token'] = fake()->sha256();
         $order['user_id'] = $user->id;
         $order->save();
         return $this->show($order);

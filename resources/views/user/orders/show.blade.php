@@ -30,7 +30,7 @@ $order = $user->orders->last();
         <div>
             <div>
                 <span>item :</span> {{ $order->item }}<br>
-                <span>client :</span> {{ $order->name }}
+                <span>client :</span> {{ $order->user->name }}
             </div>
             <div>
                 <span>contact :</span> {{ $order->contact }}<br>
@@ -53,12 +53,14 @@ $order = $user->orders->last();
 {{--                    {{ // TODO : generate QR image here }}--}}
                 </div>
             </div>
+            <br>
+            <div class="flex" style="justify-content: start">
+                <a href="#" style="color: inherit;margin-right: 2%">Delete Order</a>
+                <button onclick="location.href='{{ route('orders.edit',$order->id) }}'" class="green flex" style="padding: 6px 3% 6px 2%;">
+                    <img src="{{ url('/images/edit.svg') }}">
+                    Edit
+                </button>
+            </div>
         @endif
-{{--        @if(auth()->user()->isDriver())--}}
-{{--            <a style="float: right" class="button button-g flex" href="{{ route('deliver.store',$order->id) }}">--}}
-{{--                <img src="{{ url('/images/hand.svg') }}">--}}
-{{--                <div style="padding: 1px 0 4px 12px">Deliver</div>--}}
-{{--            </a>--}}
-{{--        @endif--}}
     </div>
 @endsection

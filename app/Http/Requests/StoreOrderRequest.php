@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreOrderRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::user()->isUser();
     }
 
     /**
@@ -21,8 +22,12 @@ class StoreOrderRequest extends FormRequest
      */
     public function rules(): array
     {
+        $location = 'required|string|min:8';
         return [
-            //
+            'item' => 'required|string|min:3',
+            'pickup' => $location,
+            'location' => $location,
+            'contact' => 'required|string|min:6',
         ];
     }
 }

@@ -11,20 +11,42 @@ $order = $user->orders->last();
         <form action="{{ route('orders.store') }}" method="post">
             @csrf
             @method('post')
-            <label for="name">enter the name of the client :</label><br>
-            <input class="input" type="text" name="name"><br>
 
             <label for="item">enter the name of the item :</label><br>
-            <input class="input" type="text" name="item"><br>
+            <input class="input @error('item') error-input @enderror" type="text" name="item" value="{{ old('item') }}">
+            @error('item')
+                <div class="error-text">
+                    {{ $message }}
+                </div>
+            @enderror
+            <br>
 
             <label for="contact">client phone number :</label><br>
-            <input class="input" type="text" name="contact"><br>
+            <input class="input @error('contact') error-input @enderror" type="text" name="contact" value="{{ old('contact') }}">
+            @error('contact')
+            <div class="error-text">
+                {{ $message }}
+            </div>
+            @enderror
+            <br>
 
             <label for="pickup">address of the pickup :</label><br>
-            <input class="input" type="text" name="pickup"><br>
+            <input class="input @error('pickup') error-input @enderror" type="text" name="pickup" value="{{ old('pickup') }}">
+            @error('pickup')
+            <div class="error-text">
+                {{ $message }}
+            </div>
+            @enderror
+            <br>
 
-            <label for="location">address of the order :</label><br>
-            <input class="input" type="text" name="location">
+            <label for="location">address of the delivery :</label><br>
+            <input class="input @error('location') error-input @enderror" type="text" name="location" value="{{ old('location') }}">
+            @error('location')
+            <div class="error-text">
+                {{ $message }}
+            </div>
+            @enderror
+
             <br>
             <br>
             <input type="submit" value="save order">

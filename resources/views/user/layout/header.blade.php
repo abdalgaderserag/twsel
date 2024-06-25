@@ -13,12 +13,15 @@
 @auth
 <div class="flex" style="margin-right: 0.8%">
 
-{{--    <div class="item item-ef active">--}}
-{{--        Dashboard--}}
-{{--    </div>--}}
-{{--    <div class="item item-ef">--}}
-{{--        Orders--}}
-{{--    </div>--}}
+    <div onclick="location.href='{{ route('home') }}'" class="item item-ef @if(url()->current() === route('home')) active @endif">
+        Dashboard
+    </div>
+    <div onclick="location.href='{{ route('profile',$user->username) }}'" class="item item-ef @if(url()->current() === route('profile',$user->username)) active @endif">
+        profile
+    </div>
+    <div onclick="location.href='{{ route('logout') }}'" class="item item-ef">
+        logout
+    </div>
 {{--    <div class="item item-ef">--}}
 {{--        payments--}}
 {{--    </div>--}}

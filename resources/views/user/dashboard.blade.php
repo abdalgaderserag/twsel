@@ -118,9 +118,11 @@
                             <img src="{{ url('/images/info-g.svg') }}">
                         </a>
 
-                        <a href="{{ route('orders.edit',$order->id) }}">
-                            <img src="{{ url('/images/edit-g.svg') }}">
-                        </a>
+                        @if($order['status'] !== 4)
+                            <a href="{{ route('orders.edit',$order->id) }}">
+                                <img src="{{ url('/images/edit-g.svg') }}">
+                            </a>
+                        @endif
                     </div>
                 </div>
             @endforeach

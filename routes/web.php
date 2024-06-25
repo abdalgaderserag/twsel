@@ -22,7 +22,7 @@ Route::get('/test',function (){
 Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('auth')->group(function (){
         Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
+        Route::get('profile/edit', 'Auth\UserController@edit')->name('profile.edit');
         Route::middleware(\App\Http\Middleware\UserActions::class)->group(function (){
             Route::resource('orders','OrderController')->except(['index','show']);
             Route::get('/dashboard','Auth\UserController@home')->name('home');

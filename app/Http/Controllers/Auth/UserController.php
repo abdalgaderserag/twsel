@@ -30,4 +30,10 @@ class UserController extends Controller
             return view('error.userNotFound');
         return view('user.profile')->with('userData',$user);
     }
+
+
+    public function edit()
+    {
+        return 'edit profile view';
+    }
 }

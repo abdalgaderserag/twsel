@@ -57,7 +57,16 @@
                             <div class="status">waiting</div>
                             @break
                         @case(2)
-                            <div>2</div>
+                            <div class="status s-b">picked up</div>
+                            @break
+                        @case(3)
+                            <div class="status s-y">delayed</div>
+                            @break
+                        @case(4)
+                            <div class="status s-d">delivered</div>
+                            @break
+                        @case(5)
+                            <div class="status s-r">canceled</div>
                             @break
                     @endswitch
                 </div>

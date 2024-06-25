@@ -25,7 +25,7 @@ class OrderController extends Controller
         if ($user->isDriver()){
             $orders = $orders->reject(function (Order $o){
                 return !($o['status'] === 1 || $o['status'] === 5);
-            });
+            })->sortByDesc('status');
             return view('orders.index')->with('orders', $orders);
         }
 

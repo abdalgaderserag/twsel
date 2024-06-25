@@ -22,7 +22,7 @@ class DeliverController extends Controller
         $delivers = $delivers->reject(function (Deliver $d){
             return $d->order->status === 4;
         });
-        return view('deliver.index')->with('delivers', $delivers);
+        return view('deliver.index')->with('delivers', $delivers->sortBy('status'));
     }
 
     /**
@@ -39,9 +39,14 @@ class DeliverController extends Controller
     public function store(Order $order, StoreDeliverRequest $request)
     {
         if ($request->token !== $order->token){
-            return redirect()->back()->withErrors([
+            $errors = [
                 'token' => 'wrong token'
-            ]);
+            ];
+            if (empty($request->token))
+                $errors = [
+                    'token' => 'please type the token here or scan throw QR code'
+                ];
+            return redirect()->back()->withErrors($errors);
         }
         $count = 0;
         $delivers = Deliver::with('order')->where('user_id','=',Auth::id());

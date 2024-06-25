@@ -47,7 +47,7 @@
     @endif
 
     <div>
-        <a href="#">
+        <a href="{{ route('profile.edit') }}">
             <img src="{{ url('/images/edit.svg') }}">
             edit profile
         </a>

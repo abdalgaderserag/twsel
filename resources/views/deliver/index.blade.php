@@ -21,7 +21,7 @@
                 location
             </div>
 
-            <div class="item-small">
+            <div class="item center-text">
                 status
             </div>
 
@@ -34,16 +34,30 @@
             <div class="item-row flex">
 
                 <div class="item">
-                    <a href="{{ route('orders.show',$order['id']) }}">{{ $order['name'] }}</a>
+                    <a href="{{ route('orders.show',$order['id']) }}">{{ $order['item'] }}</a>
                 </div>
                 <div class="item">
                     <img src="{{ url('/images/location.svg') }}">{{ $order['location'] }}
                 </div>
 
-                <div class="item-small">
-                    <span class="status">
-                        {{ $order['status'] }}
-                    </span>
+                <div class="item center-text">
+                    @switch($order['status'])
+                        @case(1)
+                            <div class="status">waiting</div>
+                            @break
+                        @case(2)
+                            <div class="status s-b">picked up</div>
+                            @break
+                        @case(3)
+                            <div class="status s-y">delayed</div>
+                            @break
+                        @case(4)
+                            <div class="status s-d">delivered</div>
+                            @break
+                        @case(5)
+                            <div class="status s-r">canceled</div>
+                            @break
+                    @endswitch
                 </div>
 
                 <div class="item center-text">

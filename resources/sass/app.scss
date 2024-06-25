@@ -200,7 +200,7 @@ a{
 
     .item-row{
         .item{
-            width: 36%;
+            width: 28%;
             button{
                 border: 0;
                 background-color: inherit;
@@ -211,7 +211,7 @@ a{
             width: 10%;
         }
         .item:last-child{
-            width: 18%;
+            width: 16%;
         }
     }
 }
@@ -226,4 +226,26 @@ a{
             }
         }
     }
+}
+
+.status{
+    background-color: $green;
+    border-radius: 20px;
+    color: $white;
+    padding: 2px 18px 4px 18px;
+    user-select: none;
+}
+
+.s-b{
+    background-color: $blue;
+}
+.s-y{
+    background-color: $yellow;
+}
+.s-r{
+    background-color: $red;
+}
+.s-d{
+    background-color: inherit;
+    color: inherit;
 }

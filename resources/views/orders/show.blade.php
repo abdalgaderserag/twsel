@@ -2,7 +2,7 @@
 
 @section('headline')
     <div class="flex">
-        <div>{{ $order->name }} :</div>
+        <div>{{ $order->item }} :</div>
     </div>
 @endsection
 
@@ -52,7 +52,8 @@
                 @csrf
                 @method('post')
                 <label for="token">enter token :</label>
-                <input class="input" type="text" name="token">
+                <input class="input" style="@error('token')border-color: #e14c4c;@enderror" type="text" name="token" placeholder="@error('token'){{ $message }}@enderror">
+
                 <button style="float: right" class="button button-g flex" type="submit">
                     <img src="{{ url('/images/hand.svg') }}">
                     <div style="padding: 1px 0 4px 12px">Deliver</div>

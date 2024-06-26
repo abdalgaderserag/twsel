@@ -37,5 +37,7 @@ Route::namespace('App\Http\Controllers')->group(function (){
     Route::middleware('guest')->namespace('Auth')->group(function (){
         Route::get('login', 'LoginController@showLogin');
         Route::post('login', 'LoginController@login')->name('login');
+        Route::get('register', 'RegisterController@showRegister')->name('register');
+        Route::post('register', 'RegisterController@register')->name('register');
     });
 });

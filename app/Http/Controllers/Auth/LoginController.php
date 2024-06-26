@@ -19,8 +19,9 @@ class LoginController extends Controller
     {
         $user = User::all()->where('username', '=', $request['username'])->first();
         if(empty($user)){
-            $user = User::all()->where('email', '=', $request['email'])->first();
+            $user = User::all()->where('email', '=', $request['username'])->first();
         }
+//        return $user;
         if (empty($user)){
             return response('wrong authentication data',400);
         }

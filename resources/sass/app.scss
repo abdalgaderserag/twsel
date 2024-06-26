@@ -117,7 +117,7 @@ a{
 .section {
     background-color: $white;
     border-radius: 4px;
-    box-shadow: lighten($darkgray,42) 0 0 6px  0;
+    box-shadow: lighten($darkgray,32) -1px 1px 3px -1px;;
     font-size: 1.05rem;
     .center-text{
         justify-content: center;

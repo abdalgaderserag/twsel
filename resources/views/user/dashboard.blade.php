@@ -11,9 +11,13 @@
         @foreach($ongoing as $order)
         <div class="order-card flex">
             <div class="card-info">
-                <img src="{{ url($order->deliver->user->image) }}">
+                <a href="{{ route('profile',$order->deliver->user->username) }}">
+                    <img src="{{ url($order->deliver->user->image) }}">
+                </a>
                 <div>
-                    {{ $order->deliver->user->name }}
+                    <a href="{{ route('profile',$order->deliver->user->username) }}">
+                        {{ $order->deliver->user->name }}
+                    </a>
                 </div>
             </div>
             <div class="card-body">

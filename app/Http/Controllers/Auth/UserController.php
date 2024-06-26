@@ -34,6 +34,6 @@ class UserController extends Controller
 
     public function edit()
     {
-        return 'edit profile view';
+        return view('user.edit');
     }
 }

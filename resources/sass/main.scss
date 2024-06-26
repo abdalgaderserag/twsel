@@ -272,5 +272,10 @@ button:hover{
     user-select: none;
 }
 a{
-    text-decoration: none
+    text-decoration: none;
+    color: inherit;
+}
+
+span{
+    font-weight: 500;
 }

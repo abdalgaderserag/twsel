@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfileRequest;
+use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -79,5 +83,19 @@ class UserController extends Controller
     public function edit()
     {
         return view('user.edit');
+    }
+
+    public function save(UpdateProfileRequest $request)
+    {
+        $user = Auth::user();
+        $ext = $request->file('image')->guessExtension();
+        if (empty($ext))
+            $ext = $request->file('image')->clientExtension();
+        $name = $user->id .'.'. $ext;
+        $dir = '/images/profile/';
+        $path =  $request->file('image')->storeAs($dir, $name);
+        $user['image'] = $path;
+        $user->update($request->only(['name', 'contact', 'password']));
+        return redirect()->route('profile',$user->username);
     }
 }

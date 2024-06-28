@@ -50,7 +50,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
         </div>
         <div class="order-card" style="background-color: #6C77F6">
         </div>
-        @if($userData->orders->count() > 0)
+        @if($userData->orders->count() > 0 || $userData->delivers->count() > 0)
         <div class="header">
             <?php
                 if ($userData->isUser())
@@ -59,9 +59,9 @@ $user = \Illuminate\Support\Facades\Auth::user();
                     $ident = "delivers";
             ?>
             @if($userData->id === $user->id)
-                all Your {{ $ident }} :
+                Your {{ $ident }} :
             @else
-                all {{ $userData->name }} {{ $ident }} :
+                {{ $userData->name }} {{ $ident }} :
             @endif
         </div>
         @if($userData->isUser())
@@ -88,7 +88,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
                     </div>
                 </div>
 
-                @foreach($userData->orders as $order)
+                @foreach($userData->orders->take(10) as $order)
                     <div class="item-row flex">
                         <div class="item">
                             <a href="{{ route('orders.show',$order->id) }}">{{ $order['item'] }}</a>
@@ -164,7 +164,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
                     </div>
                 </div>
 
-                @foreach($userData->delivers as $deliver)
+                @foreach($userData->delivers->sortby('status')->take(50) as $deliver)
                     <div class="item-row flex">
                         <div class="item">
                             <a href="{{ route('orders.show',$deliver->order->id) }}">{{ $deliver->order['item'] }}</a>
@@ -215,6 +215,13 @@ $user = \Illuminate\Support\Facades\Auth::user();
 
             </div>
         @endif
+            @if($userData->orders->count() > 10)
+                <div class="pagination">
+                    <a href="{{ route('orders',['page' => 1, 'username' => $userData->username]) }}">
+                        <img src="{{ url('images/expand.svg') }}">
+                    </a>
+                </div>
+            @endif
         @else
             @if($userData->id === $user->id)
                 <h1>Your added Orders will show here</h1>

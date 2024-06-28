@@ -76,7 +76,7 @@
     $page = request()->input('page');
     ?>
     @if($numOfPages > 1)
-    <div class="pagination flex">
+    <div class="pagination">
         <div class="page-tab">
             <a href="{{ route('deliver.index',['page' => $page - 1]) }}">
                 <img style="rotate: 90deg;" src="{{ url('images/expand.svg') }}">

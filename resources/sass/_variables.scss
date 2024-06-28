@@ -35,6 +35,7 @@ body{
 }
 
 .pagination{
+    display: flex;
     align-items: center;
     justify-content: center;
     .page-tab{
@@ -56,6 +57,7 @@ body{
 
     .active{
         background-color: $green;
+        box-shadow: none;
         a{
             color: $white;
         }

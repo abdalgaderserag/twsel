@@ -22,7 +22,7 @@ $order = $user->orders->last();
             <br>
 
             <label for="contact">client phone number :</label><br>
-            <input class="input @error('contact') error-input @enderror" type="text" name="contact" value="{{ old('contact') }}">
+            <input class="input @error('contact') error-input @enderror" type="tel" name="contact" value="{{ $user->contact }}">
             @error('contact')
             <div class="error-text">
                 {{ $message }}

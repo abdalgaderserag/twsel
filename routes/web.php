@@ -26,6 +26,7 @@ Route::namespace('App\Http\Controllers')->group(function (){
         Route::middleware(\App\Http\Middleware\UserActions::class)->group(function (){
             Route::resource('orders','OrderController')->except(['index','show']);
             Route::get('/dashboard','Auth\UserController@home')->name('home');
+            Route::get('/{username}/orders','Auth\UserController@orders')->name('orders');
             Route::get('/{username}/profile','Auth\UserController@profile')->name('profile');
         });
         Route::resource('orders','OrderController')->only(['index','show']);

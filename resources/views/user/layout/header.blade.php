@@ -16,10 +16,14 @@
     <div onclick="location.href='{{ route('home') }}'" class="item item-ef @if(url()->current() === route('home')) active @endif">
         Dashboard
     </div>
+    <div onclick="location.href='{{ route('orders',['username' => $user->username]) }}'" class="item item-ef @if(url()->current() === route('orders',['username' => $user->username])) active @endif">
+        Orders
+    </div>
     <div onclick="location.href='{{ route('profile',$user->username) }}'" class="item item-ef @if(url()->current() === route('profile',$user->username)) active @endif">
         profile
     </div>
     <div onclick="location.href='{{ route('logout') }}'" class="item item-ef">
+        <img style="margin: 0 -6px -6px 0" src="{{ url('images/logout.svg') }}" >
         logout
     </div>
 {{--    <div class="item item-ef">--}}
@@ -30,7 +34,7 @@
         <div>
             <a href="{{ route('profile',$user->username) }}">
                 {{ $user->name }}
-            </a>
+            </a><br>
         </div>
     </div>
 </div>

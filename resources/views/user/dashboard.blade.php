@@ -29,12 +29,12 @@
                     </div>
 
                     <div>
-                        Iam currently delivering your {{ $order->item }}
+                        I am currently delivering your {{ $order->item }}
                         from {{ $order->pickup }} to {{ $order->location }}
                     </div>
 
                     <div>
-                        feel free to contact my at +{{ $order->deliver->user->contact }}
+                        feel free to contact me at +{{ $order->deliver->user->contact }}
                     </div>
                 </div>
                 <div style="margin-top: 52px">
@@ -47,6 +47,7 @@
         @endforeach
 
     </div>
+
     @endif
 
 
@@ -56,7 +57,7 @@
     @if($orders->count() > 0)
 
     <div class="header">
-        all your Orders :
+        Your Orders :
     </div>
 
     <div class="orders">
@@ -138,6 +139,15 @@
 
         </div>
     </div>
+
+    @if($numOfPages > 10)
+        <div class="pagination">
+            <a href="{{ route('orders',['page' => 1, 'username' => $user->username]) }}">
+                <img src="{{ url('images/expand.svg') }}">
+            </a>
+        </div>
+    @endif
+
     @else
         <h1>You didnt add any order yet!</h1>
     @endif

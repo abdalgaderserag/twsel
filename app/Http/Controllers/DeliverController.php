@@ -6,6 +6,7 @@ use App\Http\Requests\StoreDeliverRequest;
 use App\Models\Deliver;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 
 class DeliverController extends Controller
@@ -13,16 +14,32 @@ class DeliverController extends Controller
     /**
      * Display a listing of the resource.
      */
+    //        todo : fix math
     public function index()
     {
         $delivers = Deliver::with('order');
         $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , false)->get();
 
-//        index
         $delivers = $delivers->reject(function (Deliver $d){
             return $d->order->status === 4;
-        });
-        return view('deliver.index')->with('delivers', $delivers->sortBy('status'));
+        })->sortBy('status');
+        $page = \Illuminate\Support\Facades\Request::input('page');
+        $count = $delivers->count();
+
+
+        if ($count > 20){
+            try {
+                if ($page < 1)
+                    return redirect()->route('deliver.index',['page'=> 1 ]);
+                if (($page * 20) > $count){
+                    return redirect()->route('deliver.index',['page'=> $count/20 ]);
+                }
+            } catch (\TypeError $e){
+                return view('errors.404');
+            }
+            return view('deliver.index')->with(['delivers' => $delivers->forPage($page,20), 'numOfPages' => $count/20]);
+        }
+        return view('deliver.index')->with(['delivers' => $delivers, 'numOfPages' => 0]);
     }
 
     /**

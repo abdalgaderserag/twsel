@@ -117,4 +117,29 @@
         @endforeach
     </div>
     @endempty
+
+        <?php
+        $page = request()->input('page');
+        ?>
+    @if($numOfPages > 1)
+        <div class="pagination flex">
+            <div class="page-tab">
+                <a href="{{ route('deliver.index',['page' => $page - 1]) }}">
+                    <img style="rotate: 90deg;" src="{{ url('images/expand.svg') }}">
+                </a>
+            </div>
+            @for($p = 1; $p<= $numOfPages; $p++)
+                <div class="page-tab @if($page === '' . $p)active @endif">
+                    <a href="{{ route('deliver.index',['page' => $p]) }}">
+                        {{ $p }}
+                    </a>
+                </div>
+            @endfor
+            <div class="page-tab">
+                <a href="{{ route('deliver.index',['page' => $page + 1]) }}">
+                    <img style="rotate: -90deg;" src="{{ url('images/expand.svg') }}">
+                </a>
+            </div>
+        </div>
+    @endif
 @endsection

@@ -26,7 +26,22 @@ class OrderController extends Controller
             $orders = $orders->reject(function (Order $o){
                 return !($o['status'] === 1 || $o['status'] === 5);
             })->sortByDesc('status');
-            return view('orders.index')->with('orders', $orders);
+
+            $page = \Illuminate\Support\Facades\Request::input('page');
+            $count = $orders->count();
+            if ($count > 20) {
+                try {
+                    if ($page < 1)
+                        return redirect()->route('orders.index', ['page' => 1]);
+                    if (($page * 20) > $count) {
+                        return redirect()->route('orders.index', ['page' => $count / 20]);
+                    }
+                } catch (\TypeError $e) {
+                    return view('errors.404');
+                }
+                return view('orders.index')->with(['orders' => $orders->forPage($page, 20), 'numOfPages' => $count / 20]);
+            }
+            return view('orders.index')->with(['orders' => $orders, 'numOfPages' => 0]);
         }
 
         if ($user->isAdmin()){

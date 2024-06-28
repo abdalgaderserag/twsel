@@ -21,8 +21,8 @@
             Orders
         </a>
         <div style="border-left: white 2px solid;margin: 12px;padding-left: 10px">
-            <a href="#">New!</a>
-            <a href="#">Near me</a>
+            <a href="#">new orders</a>
+            <a href="#">orders near me</a>
             <a href="#">Delivered</a>
         </div>
     </div>
@@ -37,12 +37,6 @@
                 <a href="#">Canceled</a>
                 <a href="#">Delayed</a>
             </div>
-        </div>
-        <div>
-            <a href="#">
-                <img src="{{ url('/images/info.svg') }}">
-                wage
-            </a>
         </div>
     @endif
 

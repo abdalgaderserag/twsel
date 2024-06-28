@@ -19,6 +19,7 @@
             @yield('headline')
         </div>
         @yield('main')
+        @include('layout.footer')
     </div>
 
 </div>
@@ -27,14 +28,14 @@
 
     function resize (){
         const pageHeight = window.innerHeight;
-        const headerHeight = item.offsetHeight - 12;
+        const headerHeight = item.offsetHeight;
         document.getElementsByClassName('header')[1].style.height = headerHeight + 'px';
         const s = document.getElementById('side-section')
         s.style.height = pageHeight + 'px';
 
         const m = document.getElementById('main-section')
-        m.style.maxHeight = (pageHeight - 40) + 'px';
-        m.style.height = (pageHeight - 40) + 'px';
+        m.style.maxHeight = (pageHeight) + 'px';
+        m.style.height = (pageHeight) + 'px';
     }
     window.onload = resize()
 </script>

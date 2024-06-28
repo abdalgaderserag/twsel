@@ -60,15 +60,18 @@ a{
 
 #main-section{
     background-color: $gray;
-    width: $main-section - 4%;
+    width: $main-section;
     overflow: auto;
-    padding: 20px 2%;
+
 }
 
 #headline{
     justify-content: space-between;
+    background-color: $white;
     align-items: center;
     margin: 0 0 16px 0;
+    padding: 0 3%;
+    box-shadow: lighten($darkgray,32) -1px 1px 3px -1px;
     :first-child{
         .button{
             background-color: $blue;
@@ -119,6 +122,7 @@ a{
     border-radius: 4px;
     box-shadow: lighten($darkgray,32) -1px 1px 3px -1px;;
     font-size: 1.05rem;
+    margin: 20px 3%;
     .center-text{
         justify-content: center;
     }
@@ -248,4 +252,16 @@ a{
 .s-d{
     background-color: inherit;
     color: inherit;
+}
+
+#footer{
+    width: 100%;
+    background-color: $darkgray;
+    height: 312px;
+    margin-top: 42px;
+    box-shadow: lighten($darkgray,32) 0 -2px 3px -1px;
+    :first-child{
+        height: 96px;
+        background-color: $white;
+    }
 }

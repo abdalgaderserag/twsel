@@ -8,7 +8,7 @@
 
 
 @section('main')
-    <div>
+    <div style="width: 93%;margin-left: 3%;padding-bottom: 32px">
         <h4>order :</h4>
         <p>
             order <span>#{{ $order->id }}</span> by <span>{{ $order->user->name }}</span> to <span>{{ $order->item }}</span> send to <span>{{ $order->name }}</span>
@@ -33,7 +33,7 @@
         <div class="section sec-pad">
             <div>
                 <span>item :</span> {{ $order->item }}<br>
-                <span>client :</span> {{ $order->name }}
+                <span>client :</span> {{ $order->user->name }}
             </div>
             <div>
                 <span>contact :</span> {{ $order->contact }}<br>
@@ -41,10 +41,10 @@
             </div>
         </div>
 
-        <h4>shop info :</h4>
+        <h4>client info :</h4>
         <div class="section sec-pad" style="margin-bottom: 42px">
-            <span>shop name :</span> {{ $order->user->name }}<br>
-            <span>shop contact :</span> {{ $order->user->contact }}
+            <span>client name :</span> {{ $order->user->name }}<br>
+            <span>client contact :</span> {{ $order->user->contact }}
         </div>
         @if(auth()->user()->isDriver())
             {{ $order->token }}

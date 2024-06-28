@@ -31,8 +31,16 @@ Route::namespace('App\Http\Controllers')->group(function (){
         });
         Route::resource('orders','OrderController')->only(['index','show']);
 
-        Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit'])->middleware(\App\Http\Middleware\DriverActions::class);
-        Route::post('deliver/{order}/add', 'DeliverController@store')->name('deliver.store')->middleware(\App\Http\Middleware\DriverActions::class);
+        Route::middleware(\App\Http\Middleware\DriverActions::class)->group(function (){
+            Route::get('new','OrderController@newOrder')->name('new');
+            Route::get('delivered','OrderController@delivered')->name('delivered');
+
+            Route::resource('deliver','DeliverController')->except(['create', 'store', 'edit']);
+            Route::get('ongoing','DeliverController@ongoing')->name('ongoing');
+            Route::get('canceled','DeliverController@canceled')->name('canceled');
+            Route::get('delayed','DeliverController@delayed')->name('delayed');
+            Route::post('deliver/{order}/add', 'DeliverController@store')->name('deliver.store');
+        });
     });
 
     Route::middleware('guest')->namespace('Auth')->group(function (){

@@ -129,4 +129,15 @@ class OrderController extends Controller
         }
         return '404';
     }
+
+    public function newOrder()
+    {
+        $orders = Order::all()->where('status','=',1)->sortBy('created_at');
+        return view('orders.index')->with(['orders' => $orders, 'numOfPages' => 0]);
+    }
+    public function delivered()
+    {
+        $orders = Order::all()->where('status','=',4);
+        return view('orders.index')->with(['orders' => $orders, 'numOfPages' => 0]);
+    }
 }

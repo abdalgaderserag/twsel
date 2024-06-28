@@ -141,4 +141,32 @@ class DeliverController extends Controller
         $deliver->save();
         return redirect()->route('deliver.index');
     }
+
+    public function ongoing()
+    {
+        $delivers = Deliver::with('order');
+        $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , false)->get();
+        $delivers = $delivers->filter(function (Deliver $d){
+            return $d->order->status === 2 || $d->order->status === 3;
+        });
+        return view('deliver.index')->with(['delivers' => $delivers, 'numOfPages' => 0]);
+    }
+
+    public function canceled()
+    {
+        $delivers = Deliver::with('order');
+        $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , true)->get();
+        return view('deliver.index')->with(['delivers' => $delivers, 'numOfPages' => 0]);
+    }
+
+
+    public function delayed()
+    {
+        $delivers = Deliver::with('order');
+        $delivers = $delivers->where('user_id', '=', Auth::id())->where('isCanceled', '=' , false)->get();
+        $delivers = $delivers->filter(function (Deliver $d){
+            return $d->order->status === 3;
+        });
+        return view('deliver.index')->with(['delivers' => $delivers, 'numOfPages' => 0]);
+    }
 }

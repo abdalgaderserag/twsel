@@ -5,6 +5,9 @@ a{
     text-decoration: none;
     color: $white;
 }
+span{
+    font-weight: 700;
+}
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +46,7 @@ a{
 #side-selections{
     padding: 14px 10px;
     div{
-        margin: 6px 0;
+        margin: 14px 0;
     }
     a{
         display: flex;

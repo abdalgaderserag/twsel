@@ -2,26 +2,18 @@
 
 @section('headline')
     <div class="flex">
-        <div>{{ $order->name }} :</div>
+        <div>{{ $order->item }} :</div>
     </div>
 @endsection
 
 
 
 @section('main')
-    <style>
-        span{
-            font-weight: bold;
-        }
-        h4{
-            font-weight: 100;
-            margin: 26px 0 4px 0;
-        }
-    </style>
-    <div class="card">
+
+    <div class="card" style="padding: 0 3%">
         <h4>order :</h4>
         <p>
-            order <span>#{{ $order->id }}</span> by <span>{{ $order->user->name }}</span> to <span>{{ $order->item }}</span> send to <span>{{ $order->name }}</span>
+            order <span>#{{ $order->id }}</span> by <span>{{ $order->user->name }}</span>
             the order is currently
             <span>
                 @if($order->status == 1)
@@ -54,7 +46,7 @@
             <span>shop contact :</span> {{ $order->user->contact }}
         </div>
 
-        <div class="flex" style="float: right">
+        <div class="flex">
             @if($order->status != 4 && $order->status != 5)
                 <form action="{{ route('deliver.update',$deliver->id) }}" method="post">
                     @csrf

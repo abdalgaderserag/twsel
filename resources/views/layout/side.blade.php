@@ -21,9 +21,9 @@
             Orders
         </a>
         <div style="border-left: white 2px solid;margin: 12px;padding-left: 10px">
-            <a href="#">new orders</a>
-            <a href="#">orders near me</a>
-            <a href="#">Delivered</a>
+            <a href="{{ route('new') }}">new orders</a>
+{{--            <a href="#">orders near me</a>--}}
+            <a href="{{ route('delivered') }}">Delivered</a>
         </div>
     </div>
     @if($user->isDriver())
@@ -33,9 +33,9 @@
                 delivers
             </a>
             <div style="border-left: white 2px solid;margin: 12px;padding-left: 10px">
-                <a href="#">On-going</a>
-                <a href="#">Canceled</a>
-                <a href="#">Delayed</a>
+                <a href="{{ route('ongoing') }}">On-going</a>
+                <a href="{{ route('canceled') }}">Canceled</a>
+                <a href="{{ route('delayed') }}">Delayed</a>
             </div>
         </div>
     @endif
@@ -48,7 +48,7 @@
     </div>
     <div>
         <a href="{{ route('logout') }}">
-            <img src="{{ url('/images/delete.svg') }}">
+            <img src="{{ url('/images/logout-w.svg') }}">
             logout
         </a>
     </div>

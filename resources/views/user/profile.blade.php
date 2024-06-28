@@ -50,6 +50,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
         </div>
         <div class="order-card" style="background-color: #6C77F6">
         </div>
+        @if($userData->orders->count() > 0)
         <div class="header">
             <?php
                 if ($userData->isUser())
@@ -213,6 +214,13 @@ $user = \Illuminate\Support\Facades\Auth::user();
 
 
             </div>
+        @endif
+        @else
+            @if($userData->id === $user->id)
+                <h1>Your added Orders will show here</h1>
+            @else
+                <h1>Look like this user didn't have orders</h1>
+            @endif
         @endif
     </div>
 @endsection

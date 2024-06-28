@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,13 +24,14 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $o = new Order();
         return [
             'item' => $this->item(),
             'pickup' => $this->faker->streetAddress,
             'location' => $this->faker->streetAddress,
             'contact' => $this->faker->phoneNumber,
             'status' => rand(1,5),
-            'token' => fake()->sha256(),
+            'token' => $o->createToken(),
         ];
     }
 }

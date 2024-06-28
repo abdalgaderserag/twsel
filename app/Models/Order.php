@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -17,6 +17,15 @@ class Order extends Model
     protected $guarded = [
         'token'
     ];
+
+    public function createToken()
+    {
+        $token = fake()->sha256();
+        if (DB::table('orders')->where('token', '=', $token)->exists()){
+            $this->createToken();
+        }
+        return $token;
+    }
 
     public function user()
     {

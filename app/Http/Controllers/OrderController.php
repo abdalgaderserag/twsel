@@ -6,7 +6,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+
 
 class OrderController extends Controller
 {
@@ -54,7 +54,7 @@ class OrderController extends Controller
             'token',
             'status',
         ]));
-        $order['token'] = fake()->sha256();
+        $order['token'] = $order->createToken();
         $order['user_id'] = $user->id;
         $order->save();
         return $this->show($order);

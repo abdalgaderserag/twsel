@@ -4,6 +4,8 @@
 ?>
 
 @section('main')
+
+    @if($ongoing->count() > 0)
     <div class="header">
         On the way :
     </div>
@@ -45,11 +47,13 @@
         @endforeach
 
     </div>
+    @endif
 
 
 
 
 
+    @if($orders->count() > 0)
 
     <div class="header">
         all your Orders :
@@ -134,4 +138,7 @@
 
         </div>
     </div>
+    @else
+        <h1>You didnt add any order yet!</h1>
+    @endif
 @endsection
